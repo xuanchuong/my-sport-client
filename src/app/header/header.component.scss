@@ -1,4 +1,6 @@
 .layout-topbar {
+    
+    padding: 17px 17px 24px 17px;
     position: fixed;
     top: 0;
     left:0;
@@ -6,7 +8,7 @@
     z-index: 9998;
     padding: 17px 17px 24px 17px;
     margin-left: auto;
-			margin-right: auto;
+            margin-right: auto;
     &.scrollUp {
         transform: translateY(-120px);
     }
@@ -14,30 +16,38 @@
     padding: 0;
     width: 100%;
     z-index: 999997;
-    .masthead-wrap {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        list-style-type: none;
-        .my-avatar {
-            img {
-                height: 72px;
-            }
-        }
-        .left-side-navigator-bar {
-            justify-content: center;
-            ul {
-                .selected {
-                    border-bottom-style: solid;
-                    border-bottom-color: #0052CC;
+    .container {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        .masthead-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style-type: none;
+            .my-avatar {
+                img {
+                    height: 72px;
                 }
-                a {
-                    color: #42526E;
-                    font-size: 1.5em;
+            }
+            .left-side-navigator-bar {
+                justify-content: center;
+                ul {
+                    display: flex;
+                    list-style-type: none;
+                    opacity: 0.7;
+                    .selected {
+                        border-bottom-style: solid;
+                        border-bottom-color: #0052CC;
+                    }
+                    a {
+                        color: #42526E;
+                        font-size: 1.5em;
 
+                    }
                 }
+                
             }
-            
         }
     }
 }
