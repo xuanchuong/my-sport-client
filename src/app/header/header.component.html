@@ -8,7 +8,8 @@
             </div>
             <div class="navigator-bar left-side-navigator-bar">
                 <ul>
-                    <li *ngFor="let item of navigatorItems">
+                    <li *ngFor="let item of navigatorItems" (click)="onSelect(item)"
+                        [class.selected]="item === selectedItem">
                             <a routerLink="/contact">{{item}}</a>
                     </li>
                 </ul>

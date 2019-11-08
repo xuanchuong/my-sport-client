@@ -9,10 +9,16 @@ export class HeaderComponent implements OnInit {
   navigatorItems: String[] = [
     "Home", "Contact"
   ];
+
+  selectedItem: String;
     
   constructor() { }
 
   ngOnInit() {
+    this.selectedItem = this.navigatorItems[0];
   }
 
+  onSelect(item: String): void {
+    this.selectedItem = item;
+  }
 }
