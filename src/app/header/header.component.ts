@@ -7,12 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   navigatorItems: String[] = [
-    "Home", "Contact"
+    "home", "contact"
   ];
+
+  selectedItem: String;
     
   constructor() { }
 
   ngOnInit() {
+    this.selectedItem = this.navigatorItems[0];
   }
 
+  onSelect(item: String): void {
+    this.selectedItem = item;
+  }
 }

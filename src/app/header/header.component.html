@@ -2,14 +2,15 @@
     <div class="container">
         <section class="navigator-bar masthead-wrap">
             <div class="my-avatar">
-                <a routerLink="/">
+                <a routerLink="/home">
                     <img src="assets/img/me.svg">
                 </a>
             </div>
             <div class="navigator-bar left-side-navigator-bar">
                 <ul>
-                    <li *ngFor="let item of navigatorItems">
-                            <a routerLink="/contact">{{item}}</a>
+                    <li *ngFor="let item of navigatorItems" (click)="onSelect(item)"
+                        [class.selected]="item === selectedItem">
+                            <a routerLink="/{{item}}">{{item}}</a>
                     </li>
                 </ul>
             </div>
