@@ -12,6 +12,15 @@
                         [class.selected]="item === selectedItem">
                             <a routerLink="/{{item}}">{{item}}</a>
                     </li>
+                    
+                    <li>
+                        <a  routerLink="login">Login</a>
+                    </li>
+                    <li (click)="onLogout()" *ngIf="isLoggedIn | async">
+                        <a>Logout</a>
+                        
+                    </li>
+
                 </ul>
             </div>
         </section>
