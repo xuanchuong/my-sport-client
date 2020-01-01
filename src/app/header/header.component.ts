@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   navigatorItems: String[] = [
-    "home", "contact"
+    "home", "contact", "logout", "login"
   ];
 
   selectedItem: String;
