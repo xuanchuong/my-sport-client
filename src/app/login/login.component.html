@@ -1,1 +1,29 @@
-<p>login works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" name="login-form"
+ class="login-form submit-form">
+    <div class="form-wrapper">
+        <div class="user-name input-field">
+            <label for="username">Email or mobile no.</label>
+            <input type="text" id="username" formControlName="userName" />
+            <mat-error *ngIf="isFieldInvalid('userName')">
+                Please inform your user name
+            </mat-error>
+        </div>
+        <div class="password input-field">
+            <label for="password">Password</label>
+            <input type="password" id="password" formControlName="password" />
+            <mat-error *ngIf="isFieldInvalid('password')">
+                Please inform your password
+            </mat-error>
+        </div>
+
+        <div class="form-actions">
+            <div class="left-div">
+                <button class="btn">Log in</button>
+            </div>
+            <div class="right-div">
+                <div>Not account yet?</div>
+                <a href="/register" class="register-link">Register</a>
+            </div>
+        </div>
+    </div>
+</form>
