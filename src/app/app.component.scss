@@ -1,5 +1,6 @@
-@import "./utils/utils/utils";
 @import "./utils/variables";
+@import "./utils/clearfix";
+@import "./utils/utils/utils";
 @import "./utils/mixins";
 
 .layout-wrapper {
