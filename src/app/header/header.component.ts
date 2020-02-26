@@ -8,17 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  isLoggedIn: Observable<boolean>; 
+  isLoggedIn: Observable<boolean>;
+  isLoggedOut: Observable<boolean>;
   navigatorItems: String[] = [
     "home", "contact"
   ];
 
   selectedItem: String;
-    
+
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.isLoggedIn = this.authService.isLoggedIn;
+    this.isLoggedOut = this.authService.isLoggedOut;
     this.selectedItem = this.navigatorItems[0];
   }
 
