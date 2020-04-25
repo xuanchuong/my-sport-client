@@ -20,6 +20,9 @@
                     <li (click)="onLogout()" *ngIf="isLoggedIn | async">
                         <a>logout</a>
                     </li>
+                    <li *ngIf="isLoggedOut | async">
+                      <a routerLink="signin">signin</a>
+                    </li>
                 </ul>
             </div>
         </section>
