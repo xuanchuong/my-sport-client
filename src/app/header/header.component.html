@@ -13,14 +13,14 @@
                             <a routerLink="/{{item}}">{{item}}</a>
                     </li>
 
-                    <li *ngIf="isLoggedOut | async" (click)="onSelect('login')"
+                    <li *ngIf="!(isLoggedIn$ | async)" (click)="onSelect('login')"
                         [class.selected]="'login' === selectedItem">
                         <a  routerLink="login">login</a>
                     </li>
-                    <li (click)="onLogout()" *ngIf="isLoggedIn | async">
+                    <li (click)="onLogout()" *ngIf="isLoggedIn$ | async">
                         <a>logout</a>
                     </li>
-                    <li *ngIf="isLoggedOut | async">
+                    <li *ngIf="!(isLoggedIn$ | async)">
                       <a routerLink="signin">signin</a>
                     </li>
                 </ul>

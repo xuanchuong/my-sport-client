@@ -3,9 +3,11 @@ import {HttpClient} from "@angular/common/http";
 import {of} from "rxjs";
 
 interface Config {
+  serverUrl: string,
   loginUrl: string;
   clientId: string;
   clientSecret: string;
+  signinUrl: string;
 }
 
 export function configServiceInitializerFactory(config: ConfigService): Function {
@@ -21,9 +23,11 @@ export class ConfigService {
 
   load(): Promise<any> {
     this.config = {
+      serverUrl: 'http://localhost:8080',
       loginUrl: 'http://localhost:8080/oauth/token',
       clientId: 'xuanchuongdp',
-      clientSecret: 'secret'
+      clientSecret: 'secret',
+      signinUrl: 'http://localhost:8080/user/signin'
     };
     return of().toPromise();
   }
