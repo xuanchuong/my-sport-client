@@ -8,6 +8,8 @@ import {User} from "./user";
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {TokenInterceptor} from './token.interceptor';
 import {UserService} from "../../services/user.service";
+import * as auth0 from 'auth0-js';
+import {environment} from "../../../environments/environment";
 
 const accessTokenKey = 'access_token';
 const refreshTokenKey = 'refresh_token';
@@ -23,6 +25,14 @@ export class AuthService {
   private loggedUserSubject: BehaviorSubject<boolean>;
   loggedUser$: Observable<boolean>;
   private loggedIn = new BehaviorSubject<boolean>(false);
+  auth0 = new auth0.WebAuth({
+    clientID: environment.auth.clientID,
+    domain: environment.auth.domain,
+    responseType: 'token',
+    redirectUri: environment.auth.redirect,
+    audience: environment.auth.audience,
+    scope: environment.auth.scope
+  });
 
   constructor(
     private router: Router,
@@ -161,7 +171,8 @@ export class AuthService {
         .set(refreshTokenKey, refreshToken)
         .set('grant_type', refreshTokenKey);
     const headers = new HttpHeaders({
-      'Authorization': 'Basic ' + btoa(`${this.config.config.clientId}:${this.config.config.clientSecret}`)
+      'Authorization': 'Basic ' + btoa(`${this.config.config.clientId}:${this.config.config.clientSecret}`),
+      'Access-Control-Allow-Origin': '*'
     });
 
     return this.http.post<any>(this.config.config.loginUrl, params, {headers}
