@@ -3,16 +3,18 @@
     <div class="form-wrapper">
         <div class="user-name input-field">
             <label for="username">Email or mobile no.</label>
-            <input type="text" id="username" formControlName="userName" />
-            <mat-error *ngIf="isFieldInvalid('userName')">
-                Please inform your user name
+            <input type="text" id="username" formControlName="username" />
+
+            <mat-error *ngFor="let error of form.get('username').errors | keyvalue | slice:0:1">
+              {{error.key === 'email' ? 'Email format not valid' : ''}}
+              {{error.key === 'required' ? 'Email is required' : ''}}
             </mat-error>
         </div>
         <div class="password input-field">
             <label for="password">Password</label>
             <input type="password" id="password" formControlName="password" />
-            <mat-error *ngIf="isFieldInvalid('password')">
-                Please inform your password
+            <mat-error *ngFor="let error of form.get('password').errors | keyvalue | slice:0:1">
+              {{error.key === 'required' ? 'Password is required' : ''}}
             </mat-error>
         </div>
 

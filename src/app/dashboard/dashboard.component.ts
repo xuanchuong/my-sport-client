@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Match} from '../match/match';
-import {MATCHES} from '../match/mock-matches';
+import {MatchService} from "../match/match.service";
+import {Match} from "../match/match";
 
 @Component({
   selector: 'app-dashboard',
@@ -8,10 +8,15 @@ import {MATCHES} from '../match/mock-matches';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  availableMatches = MATCHES;
-  constructor() { }
+  availableMatches: Match[];
+  constructor(
+    private matchService: MatchService
+  ) { }
 
   ngOnInit() {
+    this.matchService.getAll().subscribe(matchs => {
+      this.availableMatches = matchs;
+    })
   }
 
 }

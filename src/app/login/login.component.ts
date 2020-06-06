@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {AuthService} from '../auth/auth.service';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../core/auth/auth.service';
+import {Router} from "@angular/router";
+import {BehaviorSubject} from "rxjs";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-login',
@@ -8,32 +11,34 @@ import {AuthService} from '../auth/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
   form: FormGroup;
-  private formSubmitAttempt: boolean;
-  constructor(
-    private fb: FormBuilder,         // {3}
-    private authService: AuthService // {4}
-  ) {}
+  private loadingSubject: BehaviorSubject<boolean>;
 
   ngOnInit() {
-    this.form = this.fb.group({     // {5}
-      userName: ['', Validators.required],
-      password: ['', Validators.required]
+    this.form = new FormGroup({
+      username: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', Validators.required),
     });
   }
 
-  isFieldInvalid(field: string) { // {6}
-    return (
-      (!this.form.get(field).valid && this.form.get(field).touched) ||
-      (this.form.get(field).untouched && this.formSubmitAttempt)
-    );
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {
+    this.loadingSubject = new BehaviorSubject<boolean>(false);
   }
 
   onSubmit() {
-    if (this.form.valid) {
-      this.authService.login(this.form.value); // {7}
-    }
-    this.formSubmitAttempt = true;             // {8}
+    this.authService.login(this.form.value.username, this.form.value.password)
+      .then(() => {
+          this.router.navigate(['/']);
+        },
+        error => {
+          this.snackBar.open('Authentication failed.');
+          this.loadingSubject.next(false);
+        });
   }
 
 }

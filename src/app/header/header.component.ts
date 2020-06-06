@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
-import { AuthService } from './../auth/auth.service';
+import { AuthService } from '../core/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
+import {User} from "../core/auth/user";
 
 @Component({
   selector: 'app-header',
@@ -8,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  isLoggedIn: Observable<boolean>;
-  isLoggedOut: Observable<boolean>;
+
+  isLoggedIn$: Observable<boolean>;
+
   navigatorItems: String[] = [
     "home", "contact"
   ];
@@ -19,8 +21,7 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.isLoggedIn = this.authService.isLoggedIn;
-    this.isLoggedOut = this.authService.isLoggedOut;
+    this.isLoggedIn$ = this.authService.isLoggedIn;
     this.selectedItem = this.navigatorItems[0];
   }
 
