@@ -1,19 +1,2 @@
-<div  class="match-container">
-        <h2>Matches recommended for you</h2>
-        <table class="match-table">
-            <tbody class="match-table-body">
-                <tr *ngFor="let match of availableMatches" class="match-item-wrapper">
-                    <td class="match-item">
-                        <div  class="title-box">
-                            <span class="title">{{match.title}}</span>
-                        </div>
-                        <div>
-                            <span>Slot: </span>
-                            <span>{{match.numberOfPlayers}}</span>
-                        </div>
-                        <div>{{match.description}}</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+
+<app-match-list></app-match-list>

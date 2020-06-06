@@ -12,7 +12,6 @@
                         [class.selected]="item === selectedItem">
                             <a routerLink="/{{item}}">{{item}}</a>
                     </li>
-
                     <li *ngIf="!(isLoggedIn$ | async)" (click)="onSelect('login')"
                         [class.selected]="'login' === selectedItem">
                         <a  routerLink="login">login</a>

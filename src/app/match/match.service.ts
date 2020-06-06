@@ -16,4 +16,10 @@ export class MatchService {
     const url = "http://localhost:8080/rest/api/v1/match/all";
     return this.http.get<Match[]>(url, {});
   }
+
+  getMatchById(id: string): Observable<Match> {
+    console.log(id);
+    const url = "http://localhost:8080/rest/api/v1/match/"+id;
+    return this.http.get<Match>(url, {});
+  }
 }
