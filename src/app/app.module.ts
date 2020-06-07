@@ -20,6 +20,7 @@ import {RequestHeadersInterceptorService} from "./core/html/interceptors/request
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { MatchDetailComponent } from './match/match-detail/match-detail.component';
 import { MatchListComponent } from './match/match-list/match-list.component';
+import { MatchCreationComponent } from './match/match-creation/match-creation.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MatchListComponent } from './match/match-list/match-list.component';
     DashboardComponent,
     SigninComponent,
     MatchDetailComponent,
-    MatchListComponent
+    MatchListComponent,
+    MatchCreationComponent
   ],
   imports: [
     BrowserModule,

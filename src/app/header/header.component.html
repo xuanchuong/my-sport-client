@@ -3,7 +3,7 @@
         <section class="navigator-bar masthead-wrap">
             <div class="my-avatar">
                 <a routerLink="/home">
-                    <img src="assets/img/me.svg">
+                    <img alt="avt" src="assets/img/me.svg">
                 </a>
             </div>
             <div class="navigator-bar left-side-navigator-bar">
@@ -15,6 +15,9 @@
                     <li *ngIf="!(isLoggedIn$ | async)" (click)="onSelect('login')"
                         [class.selected]="'login' === selectedItem">
                         <a  routerLink="login">login</a>
+                    </li>
+                    <li (click)="onSelect('match-creation')" *ngIf="isLoggedIn$ | async">
+                        <a routerLink="match/create">create match</a>
                     </li>
                     <li (click)="onLogout()" *ngIf="isLoggedIn$ | async">
                         <a>logout</a>

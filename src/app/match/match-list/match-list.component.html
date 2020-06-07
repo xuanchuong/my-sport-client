@@ -2,7 +2,7 @@
 	<h2>Matches recommended for you</h2>
 	<div class="match-table">
 		<div class="match-table-body">
-			<div *ngFor="let match of availableMatches; index as matchId" class="match-item-wrapper">
+			<div *ngFor="let match of availableMatches" class="match-item-wrapper">
 				<a class="match-item-link" routerLink="/matches/{{match.id}}">
 					<div class="match-item">
 						<div class="title-box">
