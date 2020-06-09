@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 
@@ -17,18 +17,22 @@ export class SigninComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      username: ['', Validators.required],
-      password: ['', Validators.required, Validators.minLength(6)]
-      });
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required, Validators.minLength(6)],
+      matchingPassword: ['', Validators.required, Validators.minLength(6)],
+    });
   }
 
-  get f() { return this.registerForm.controls; }
+  get f() {
+    return this.registerForm.controls;
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -37,6 +41,6 @@ export class SigninComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login']).then(() => {});
   }
 }
