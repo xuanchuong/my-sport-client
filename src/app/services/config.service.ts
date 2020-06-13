@@ -27,7 +27,7 @@ export class ConfigService {
       loginUrl: 'http://localhost:8080/oauth/token',
       clientId: 'xuanchuongdp',
       clientSecret: 'secret',
-      signinUrl: 'http://localhost:8080/user/signin'
+      signinUrl: 'http://localhost:8080/rest/api/v1/user/create'
     };
     return of().toPromise();
   }
