@@ -63,6 +63,5 @@ export class SigninComponent implements OnInit {
                 alert("register fail");
             })
 
-
     }
 }

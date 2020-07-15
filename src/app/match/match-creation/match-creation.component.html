@@ -3,23 +3,44 @@
 	<div class="form-wrapper">
 		<div class="title input-field">
 			<label for="title">Tiêu đề</label>
-			<input type="text" id="title" name="title" formControlName="title"/>
+			<input type="text" id="title" name="title" formControlName="title"
+             [ngClass]="{ 'is-invalid': submitted && f.title.errors }"/>
+      <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+        <div *ngIf="f.title.errors.required">title is required</div>
+      </div>
 		</div>
 		<div class="start-time input-field">
 			<label for="start-time">Thời gian</label>
-			<input type="date" id="start-time" name="start-time" formControlName="startDate"/>
+			<input type="date" id="start-time" name="start-time" formControlName="startDate"
+             [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }"/>
+      <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
+        <div *ngIf="f.startDate.errors.required">start Date is required</div>
+      </div>
 		</div>
 		<div class="location input-field">
 			<label for="location">Địa điểm</label>
-			<input type="text" id="location" name="location" formControlName="location"/>
+			<input type="text" id="location" name="location" formControlName="location"
+             [ngClass]="{ 'is-invalid': submitted && f.location.errors }"/>
+      <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+        <div *ngIf="f.location.errors.required">location is required</div>
+      </div>
 		</div>
 		<div class="player-number input-field">
 			<label for="number-players">số lượng cầu thủ</label>
-			<input type="number" id="number-players" formControlName="numberOfPlayers" name="number-players"/>
+			<input type="number" id="number-players" formControlName="numberOfPlayers" name="number-players"
+             [ngClass]="{ 'is-invalid': submitted && f.numberOfPlayers.errors }"/>
+      <div *ngIf="submitted && f.numberOfPlayers.errors" class="invalid-feedback">
+        <div *ngIf="f.numberOfPlayers.errors.required">numberOfPlayers is required</div>
+        <div *ngIf="f.numberOfPlayers.errors.min">numberOfPlayers is too small</div>
+      </div>
 		</div>
 		<div class="description input-field">
 			<label for="description">Mô tả</label>
-			<input type="text" id="description" name="description" formControlName="description"/>
+			<input type="text" id="description" name="description" formControlName="description"
+             [ngClass]="{ 'is-invalid': submitted && f.description.errors }"/>
+      <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+        <div *ngIf="f.description.errors.required">description is required</div>
+      </div>
 		</div>
 		<div class="form-actions">
 			<div class="left-div">

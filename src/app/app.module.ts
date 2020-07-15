@@ -21,6 +21,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { MatchDetailComponent } from './match/match-detail/match-detail.component';
 import { MatchListComponent } from './match/match-list/match-list.component';
 import { MatchCreationComponent } from './match/match-creation/match-creation.component';
+import {TokenInterceptor} from "./core/auth/token.interceptor";
 
 @NgModule({
   declarations: [
@@ -53,7 +54,12 @@ import { MatchCreationComponent } from './match/match-creation/match-creation.co
       multi: true
     },
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 5000}},
-    {provide: HTTP_INTERCEPTORS, useClass: RequestHeadersInterceptorService, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: RequestHeadersInterceptorService, multi: true},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
