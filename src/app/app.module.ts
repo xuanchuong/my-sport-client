@@ -18,6 +18,9 @@ import {SigninComponent} from './signin/signin.component';
 import {ConfigService, configServiceInitializerFactory} from './services/config.service';
 import {RequestHeadersInterceptorService} from "./core/html/interceptors/request-headers-interceptor.service";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { MatchDetailComponent } from './match/match-detail/match-detail.component';
+import { MatchListComponent } from './match/match-list/match-list.component';
+import { MatchCreationComponent } from './match/match-creation/match-creation.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     AppFooterComponent,
     LoginComponent,
     DashboardComponent,
-    SigninComponent
+    SigninComponent,
+    MatchDetailComponent,
+    MatchListComponent,
+    MatchCreationComponent
   ],
   imports: [
     BrowserModule,
