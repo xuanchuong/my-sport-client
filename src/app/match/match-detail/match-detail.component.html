@@ -1,40 +1,35 @@
 <div class="match-info" *ngIf="match != null">
-	<div class="title-box">
-		<label class="title">{{match.title}}</label>
-	</div>
-	<div class="summary-detail">
-		<div>
-			<h2>
-				<i class="fal fa-info"></i>
-				Detail
-			</h2>
-		</div>
-		<div class="summary-details-container">
-			<div class="qs-details-label-cell">
-				<span>thời gian: </span>
-				<label> {{match.startDate}}</label>
-			</div>
-			<div class="qs-details-label-cell">
-				<span>địa điểm: </span>
-				<label> {{match.location}}</label>
-			</div>
-			<div class="qs-details-label-cell">
-				<span>liên hệ: </span>
-<!--				<label th:text="${match.owner.fullName}"></label>-->
-			</div>
-			<div class="qs-details-label-cell">
-				<span>mô tả: </span>
-				<label>{{match.description}}</label>
-			</div>
-			<div class="qs-details-label-cell">
-				<span>người tham gia: </span>
-<!--				<div th:each="player, stat : ${match.paticipants}">-->
-<!--					<a href="#" th:text="${player.fullName}" data-toggle="modal"-->
-<!--					   data-target="#playerInfoDialog"-->
-<!--					   data-id="123456" class="paticipant-link"></a>-->
-<!--				</div>-->
+  <div class="title-box">
+    <label class="title">{{match.title}}</label>
+  </div>
+  <div class="summary-detail">
+    <div>
+      <h2>
+        <em class="fal fa-info"></em>
+        Detail
+      </h2>
+    </div>
+    <div class="summary-details-container">
+      <div class="qs-details-label-cell">
+        <span>thời gian: </span>
+        <label> {{match.startDate}}</label>
+      </div>
+      <div class="qs-details-label-cell">
+        <span>địa điểm: </span>
+        <label> {{match.location}}</label>
+      </div>
+      <div class="qs-details-label-cell">
+        <span>mô tả: </span>
+        <label>{{match.description}}</label>
+      </div>
 
-			</div>
-		</div>
-	</div>
+      <form [formGroup]="deleteForm" (ngSubmit)="onSubmit()" name="delete-form">
+        <div class="form-actions">
+          <div class="left-div">
+            <button class="btn">delete</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
