@@ -49,17 +49,17 @@ export class SigninComponent implements OnInit {
         user.lastName = this.registerForm.value.lastName;
         user.password = this.registerForm.value.password;
         user.matchingPassword = this.registerForm.value.matchingPassword;
-        this.userService.signin(user)
-            .then(user => {
-                if (user == undefined) {
+        this.userService.create(user)
+            .then(createdUser => {
+                if (createdUser == undefined) {
                     throw new Error("register fail");
                 }
-            console.log("register successfully: " + user);
+            console.log("register successfully: " + createdUser);
             this.loading = true;
             this.router.navigate(['/login']).then(() => {
             });
         })
-            .catch(error => {
+            .catch(() => {
                 alert("register fail");
             })
 
