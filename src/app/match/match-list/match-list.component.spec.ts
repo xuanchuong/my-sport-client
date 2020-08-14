@@ -3,6 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatchListComponent} from './match-list.component';
 import {RouterTestingModule} from "@angular/router/testing";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {ConfigService} from "../../services/config.service";
 
 describe('MatchListComponent', () => {
   let component: MatchListComponent;
@@ -13,7 +14,8 @@ describe('MatchListComponent', () => {
       declarations: [ MatchListComponent ],
       imports: [
         RouterTestingModule, HttpClientTestingModule
-      ]
+      ],
+      providers: [ConfigService]
     })
     .compileComponents();
   }));
