@@ -42,13 +42,13 @@ describe('my-sport-server PACT', () => {
 	}
 
 	function createUser() {
-		const user = new User();
-		user.firstName = 'xuan chuong';
-		user.lastName = 'nguyen';
-		user.email = 'xuanchuongdp@gmail.com';
-		user.password = '123456';
-		user.matchingPassword = '123456';
-		return user;
+		const creatingUser = new User();
+		creatingUser.firstName = 'xuan chuong';
+		creatingUser.lastName = 'nguyen';
+		creatingUser.email = 'xuanchuongdp@gmail.com';
+		creatingUser.password = '123456';
+		creatingUser.matchingPassword = '123456';
+		return creatingUser;
 	}
 
 	describe('user api', () => {
@@ -78,7 +78,7 @@ describe('my-sport-server PACT', () => {
 
 		it('should create user successfully', async () => {
 			const userService = TestBed.inject(UserService);
-			await userService.signin(user);
+			await userService.create(user);
 		});
 	});
 });
