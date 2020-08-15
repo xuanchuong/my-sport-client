@@ -1,35 +1,43 @@
 <div class="match-info" *ngIf="match != null">
-  <div class="title-box">
-    <label class="title">{{match.title}}</label>
-  </div>
-  <div class="summary-detail">
-    <div>
-      <h2>
-        <em class="fal fa-info"></em>
-        Detail
-      </h2>
-    </div>
-    <div class="summary-details-container">
-      <div class="qs-details-label-cell">
-        <span>thời gian: </span>
-        <label> {{match.startDate}}</label>
-      </div>
-      <div class="qs-details-label-cell">
-        <span>địa điểm: </span>
-        <label> {{match.location}}</label>
-      </div>
-      <div class="qs-details-label-cell">
-        <span>mô tả: </span>
-        <label>{{match.description}}</label>
-      </div>
-
-      <form [formGroup]="deleteForm" (ngSubmit)="onSubmit()" name="delete-form">
-        <div class="form-actions">
-          <div class="left-div">
-            <button class="btn">delete</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
+	<div class="title-box">
+		<label class="title">{{match.title}}</label>
+	</div>
+	<div class="summary-detail">
+		<div>
+			<h2>
+				<em class="fal fa-info"></em>
+				Detail
+			</h2>
+		</div>
+		<div class="summary-details-container">
+			<div class="qs-details-label-cell">
+				<span>thời gian: </span>
+				<label> {{match.startDate}}</label>
+			</div>
+			<div class="qs-details-label-cell">
+				<span>địa điểm: </span>
+				<label> {{match.location}}</label>
+			</div>
+			<div class="qs-details-label-cell">
+				<span>mô tả: </span>
+				<label>{{match.description}}</label>
+			</div>
+			<div class="qs-details-label-cell">
+				<span>số lượng thành viên: </span>
+				<label>{{match.numberOfPlayers}}</label>
+			</div>
+			<div class="qs-details-label-cell">
+				<span>người tham gia: </span>
+				<label>{{match.paticipantIds.length}}</label>
+			</div>
+			<div class="form-actions">
+				<div class="left-div">
+					<input type="button" value="delete" (click)="deleteTheMatch()">
+				</div>
+				<div class="right-div">
+					<input type="button" value="join" (click)="joinTheMatch()">
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Match} from "../match";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatchService} from "../match.service";
-import {FormGroup} from "@angular/forms";
 
 @Component({
 	selector: 'app-match-detail',
@@ -11,7 +10,6 @@ import {FormGroup} from "@angular/forms";
 })
 export class MatchDetailComponent implements OnInit {
 	match: Match;
-	deleteForm: FormGroup;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -21,7 +19,6 @@ export class MatchDetailComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.deleteForm = new FormGroup({});
 		this.route.paramMap.subscribe(params => {
 			this.matchService.getMatchById(params.get('matchId')).subscribe(match => {
 				this.match = match;
@@ -29,7 +26,7 @@ export class MatchDetailComponent implements OnInit {
 		})
 	}
 
-	onSubmit() {
+	deleteTheMatch() {
 		console.log("delete match");
 		this.matchService.delete(this.match.id).then(result => {
 			if (result) {
@@ -38,4 +35,14 @@ export class MatchDetailComponent implements OnInit {
 		})
 	}
 
+	joinTheMatch() {
+		console.log("join the match");
+		this.matchService.joinTheMatch(this.match.id).then(result => {
+			if (result) {
+				this.router.navigate(['/home']);
+			}
+		}, error => {
+			console.error(error);
+		});
+	}
 }

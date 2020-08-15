@@ -5,7 +5,7 @@ export class Match {
     location: string;
     numberOfPlayers: number;
     description: string;
-
+    paticipantIds: number[];
     constructor() {
     }
 }
