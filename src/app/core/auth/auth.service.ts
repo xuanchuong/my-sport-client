@@ -116,7 +116,6 @@ export class AuthService {
 	private extractLoggedUser(accessToken): Observable<User> {
 		if (accessToken) {
 			const data = this.jwtHelper.decodeToken(accessToken);
-			// console.log(data);
 			if (data) {
 				return this.userService.findByEmail(data.user_name);
 			}

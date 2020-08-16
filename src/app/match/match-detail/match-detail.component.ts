@@ -2,26 +2,31 @@ import {Component, OnInit} from '@angular/core';
 import {Match} from "../match";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatchService} from "../match.service";
+import {User} from "../../core/auth/user";
+import {UserService} from "../../services/user.service";
 
 @Component({
 	selector: 'app-match-detail',
 	templateUrl: './match-detail.component.html',
 	styleUrls: ['./match-detail.component.scss']
 })
-export class MatchDetailComponent implements OnInit {
-	match: Match;
+export class MatchDetailComponent {
+
+	private match: Match;
+	private owner: User;
 
 	constructor(
 		private route: ActivatedRoute,
 		private router: Router,
 		private matchService: MatchService,
+		private userService: UserService
 	) {
-	}
-
-	ngOnInit() {
 		this.route.paramMap.subscribe(params => {
 			this.matchService.getMatchById(params.get('matchId')).subscribe(match => {
 				this.match = match;
+				this.userService.getById(match.ownerId).subscribe(owner => {
+					this.owner = owner;
+				})
 			})
 		})
 	}
