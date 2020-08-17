@@ -1,10 +1,14 @@
 import {UserService} from "../../../services/user.service";
 import {TestBed} from "@angular/core/testing";
-import {CREATED} from 'http-status-codes';
+import {CREATED, OK} from 'http-status-codes';
 import {User} from "../../auth/user";
 import {HttpClientModule} from "@angular/common/http";
 import {Matchers} from '@pact-foundation/pact';
 import {PactWrapper} from "./pact-wrapper";
+import {MatchService} from "../../../match/match.service";
+import {RouterTestingModule} from "@angular/router/testing";
+import {ConfigService} from "../../../services/config.service";
+import {Match} from "../../../match/match";
 
 describe('my-sport-server PACT', () => {
 
@@ -17,8 +21,8 @@ describe('my-sport-server PACT', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [HttpClientModule],
-			providers: [UserService],
+			imports: [HttpClientModule, RouterTestingModule],
+			providers: [UserService, ConfigService],
 		});
 	});
 
@@ -51,6 +55,16 @@ describe('my-sport-server PACT', () => {
 		return creatingUser;
 	}
 
+	function createMatch() {
+		const creatingMatch = new Match();
+		creatingMatch.title = 'title';
+		creatingMatch.description = 'nguyen';
+		creatingMatch.location = 'xuanchuongdp@gmail.com';
+		creatingMatch.numberOfPlayers = 10;
+		creatingMatch.startDate = '13-12-2020';
+		return creatingMatch;
+	}
+
 	describe('user api', () => {
 		beforeAll(async () => {
 			await provider.addInteraction({
@@ -79,6 +93,38 @@ describe('my-sport-server PACT', () => {
 		it('should create user successfully', async () => {
 			const userService = TestBed.inject(UserService);
 			await userService.create(user);
+		});
+	});
+
+	describe('match api', () => {
+		beforeAll(async () => {
+			await provider.addInteraction({
+				state: `get all match`,
+				uponReceiving: 'any user can get all available match',
+				withRequest: {
+					method: "GET",
+					path: '/rest/api/v1/match/all'
+				},
+				willRespondWith: {
+					status: OK,
+					headers: {
+						"Content-Type": "application/json; charset=UTF-8"
+					},
+					body: {
+						id: Matchers.term({ generate: '123', matcher: '\\d+' }),
+						ownerId: Matchers.term({ generate: '123', matcher: '\\d+' }),
+						location: Matchers.string(user.firstName),
+						title: Matchers.string(user.lastName),
+						description: Matchers.email(user.email),
+						numberOfPlayers: Matchers.term({ generate: '123', matcher: '\\d+' })
+					},
+				},
+			});
+		});
+
+		it('should get match successfully', async () => {
+			const matchService = TestBed.inject(MatchService);
+			await matchService.getAll();
 		});
 	});
 });

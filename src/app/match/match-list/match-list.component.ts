@@ -15,8 +15,8 @@ export class MatchListComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.matchService.getAll().subscribe(matchs => {
-            this.availableMatches = matchs;
+        this.matchService.getAll().subscribe(matches => {
+            this.availableMatches = matches;
         })
     }
 

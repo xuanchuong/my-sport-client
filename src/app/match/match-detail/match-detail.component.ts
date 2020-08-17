@@ -1,27 +1,53 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Match} from "../match";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {MatchService} from "../match.service";
+import {User} from "../../core/auth/user";
+import {UserService} from "../../services/user.service";
 
 @Component({
-  selector: 'app-match-detail',
-  templateUrl: './match-detail.component.html',
-  styleUrls: ['./match-detail.component.scss']
+	selector: 'app-match-detail',
+	templateUrl: './match-detail.component.html',
+	styleUrls: ['./match-detail.component.scss']
 })
-export class MatchDetailComponent implements OnInit {
-  match: Match;
+export class MatchDetailComponent {
 
-  constructor(
-      private route: ActivatedRoute,
-      private matchService: MatchService,
-  ) { }
+	private match: Match;
+	private owner: User;
 
-  ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.matchService.getMatchById(params.get('matchId')).subscribe(match => {
-        this.match = match;
-      })
-    })
-  }
+	constructor(
+		private route: ActivatedRoute,
+		private router: Router,
+		private matchService: MatchService,
+		private userService: UserService
+	) {
+		this.route.paramMap.subscribe(params => {
+			this.matchService.getMatchById(params.get('matchId')).subscribe(match => {
+				this.match = match;
+				this.userService.getById(match.ownerId).subscribe(owner => {
+					this.owner = owner;
+				})
+			})
+		})
+	}
 
+	deleteTheMatch() {
+		console.log("delete match");
+		this.matchService.delete(this.match.id).then(result => {
+			if (result) {
+				this.router.navigate(['/home']);
+			}
+		})
+	}
+
+	joinTheMatch() {
+		console.log("join the match");
+		this.matchService.joinTheMatch(this.match.id).then(result => {
+			if (result) {
+				this.router.navigate(['/home']);
+			}
+		}, error => {
+			console.error(error);
+		});
+	}
 }

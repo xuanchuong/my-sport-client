@@ -21,6 +21,10 @@ export class UserService {
 		return this.http.get<User>(this.url, { params: new HttpParams().set('email', email) });
 	}
 
+	getById(id: number): Observable<User> {
+		return this.http.get<User>(`${this.url}/get`, {params: new HttpParams().set('id', String(id))})
+	}
+
 	create(user: User): Promise<User> {
 		const data = {
 			'firstName': user.firstName,

@@ -2,6 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MatchCreationComponent } from './match-creation.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {RouterTestingModule} from "@angular/router/testing";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {ConfigService} from "../../services/config.service";
 
 describe('MatchCreationComponent', () => {
 	let component: MatchCreationComponent;
@@ -11,8 +14,9 @@ describe('MatchCreationComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [ MatchCreationComponent ],
 			imports: [
-				ReactiveFormsModule
-			]
+				ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule
+			],
+			providers: [ConfigService]
 		})
 			.compileComponents();
 	}));

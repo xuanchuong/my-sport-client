@@ -5,7 +5,7 @@
 	<div class="summary-detail">
 		<div>
 			<h2>
-				<i class="fal fa-info"></i>
+				<em class="fal fa-info"></em>
 				Detail
 			</h2>
 		</div>
@@ -19,21 +19,28 @@
 				<label> {{match.location}}</label>
 			</div>
 			<div class="qs-details-label-cell">
-				<span>liên hệ: </span>
-<!--				<label th:text="${match.owner.fullName}"></label>-->
-			</div>
-			<div class="qs-details-label-cell">
 				<span>mô tả: </span>
 				<label>{{match.description}}</label>
 			</div>
 			<div class="qs-details-label-cell">
+				<span>số lượng thành viên: </span>
+				<label>{{match.numberOfPlayers}}</label>
+			</div>
+			<div class="qs-details-label-cell">
 				<span>người tham gia: </span>
-<!--				<div th:each="player, stat : ${match.paticipants}">-->
-<!--					<a href="#" th:text="${player.fullName}" data-toggle="modal"-->
-<!--					   data-target="#playerInfoDialog"-->
-<!--					   data-id="123456" class="paticipant-link"></a>-->
-<!--				</div>-->
-
+				<label>{{match.participantIds.length}}</label>
+			</div>
+			<div class="qs-details-label-cell">
+				<span>lien he: </span>
+				<label>{{owner.firstName}}</label>
+			</div>
+			<div class="form-actions">
+				<div class="left-div">
+					<input type="button" value="delete" (click)="deleteTheMatch()">
+				</div>
+				<div class="right-div">
+					<input type="button" value="join" (click)="joinTheMatch()">
+				</div>
 			</div>
 		</div>
 	</div>

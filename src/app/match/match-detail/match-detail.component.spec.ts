@@ -3,6 +3,8 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatchDetailComponent} from './match-detail.component';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {RouterTestingModule} from "@angular/router/testing";
+import {ReactiveFormsModule} from "@angular/forms";
+import {ConfigService} from "../../services/config.service";
 
 describe('MatchDetailComponent', () => {
 	let component: MatchDetailComponent;
@@ -11,7 +13,8 @@ describe('MatchDetailComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [ MatchDetailComponent ],
-			imports: [HttpClientTestingModule, RouterTestingModule ]
+			imports: [HttpClientTestingModule, RouterTestingModule, ReactiveFormsModule ],
+			providers: [ConfigService]
 		})
 			.compileComponents();
 	}));
