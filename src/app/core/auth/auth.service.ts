@@ -22,8 +22,8 @@ export class AuthService {
 	private accessTokenSubject: BehaviorSubject<string>;
 	accessToken$: Observable<string>;
 	private userLoading = false;
-	private loggedUserSubject: BehaviorSubject<boolean>;
-	loggedUser$: Observable<boolean>;
+	private loggedUserSubject: BehaviorSubject<User>;
+	loggedUser$: Observable<User>;
 	private loggedIn = new BehaviorSubject<boolean>(false);
 	auth0 = new auth0.WebAuth({
 		clientID: environment.auth.clientID,
@@ -50,6 +50,10 @@ export class AuthService {
 
 	get isLoggedIn() {
 		return this.loggedIn.asObservable(); // {2}
+	}
+
+	getLoggedUser(): User {
+		return this.loggedUserSubject.value;
 	}
 
 	private initLoggedInPipe() {
@@ -97,7 +101,7 @@ export class AuthService {
 	}
 
 	private initLoggedUserPipe() {
-		this.loggedUserSubject = new BehaviorSubject<boolean>(false);
+		this.loggedUserSubject = new BehaviorSubject<User>(null);
 		this.userLoading = true;
 		this.loggedUser$ = this.loggedUserSubject.asObservable().pipe(
 			skipWhile(() => {
@@ -109,7 +113,7 @@ export class AuthService {
 			switchMap(token => this.extractLoggedUser(token)))
 			.subscribe(user => {
 				this.userLoading = false;
-				this.loggedUserSubject.next(true);
+				this.loggedUserSubject.next(user);
 			});
 	}
 

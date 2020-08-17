@@ -29,6 +29,7 @@ export class UserService {
 		const data = {
 			'firstName': user.firstName,
 			'lastName': user.lastName,
+			'phoneNumber': user.phoneNumber,
 			'matchingPassword': user.matchingPassword,
 			'email': user.email,
 			'password': user.password

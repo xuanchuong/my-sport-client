@@ -24,12 +24,12 @@ export class ConfigService {
 
   load(): Promise<any> {
     this.config = {
-      API_BASE: '/rest/api/v1/match',
+      API_BASE: '/rest/api/v1/',
       serverUrl: 'http://localhost:8080',
       loginUrl: 'http://localhost:8080/oauth/token',
       clientId: 'xuanchuongdp',
       clientSecret: 'secret',
-      signinUrl: 'http://localhost:8080/rest/api/v1/user/create'
+      signinUrl: '/rest/api/v1/user/create'
     };
     return of().toPromise();
   }

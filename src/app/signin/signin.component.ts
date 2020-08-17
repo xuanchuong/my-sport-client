@@ -30,6 +30,7 @@ export class SigninComponent implements OnInit {
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(6)]],
             matchingPassword: ['', [Validators.required, Validators.minLength(6)]],
+            phoneNumber: ['', [Validators.required]]
         });
     }
 
@@ -49,6 +50,7 @@ export class SigninComponent implements OnInit {
         user.lastName = this.registerForm.value.lastName;
         user.password = this.registerForm.value.password;
         user.matchingPassword = this.registerForm.value.matchingPassword;
+        user.phoneNumber = this.registerForm.value.phoneNumber;
         this.userService.create(user)
             .then(createdUser => {
                 if (createdUser == undefined) {

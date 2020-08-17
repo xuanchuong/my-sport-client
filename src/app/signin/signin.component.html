@@ -37,6 +37,15 @@
 		</div>
 
 		<div class="input-field">
+			<label>Phone Number</label>
+			<input type="text" formControlName="phoneNumber" class="form-control"
+				   [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }"/>
+			<div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+				<div *ngIf="f.phoneNumber.errors.required">Phone number is required</div>
+			</div>
+		</div>
+
+		<div class="input-field">
 			<label>Password</label>
 			<label>
 				<input type="password" formControlName="password" class="form-control"
