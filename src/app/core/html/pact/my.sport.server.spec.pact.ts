@@ -1,14 +1,12 @@
 import {UserService} from "../../../services/user.service";
 import {TestBed} from "@angular/core/testing";
-import {CREATED, OK} from 'http-status-codes';
+import {CREATED} from 'http-status-codes';
 import {User} from "../../auth/user";
 import {HttpClientModule} from "@angular/common/http";
 import {Matchers} from '@pact-foundation/pact';
 import {PactWrapper} from "./pact-wrapper";
-import {MatchService} from "../../../match/match.service";
 import {RouterTestingModule} from "@angular/router/testing";
 import {ConfigService} from "../../../services/config.service";
-import {Match} from "../../../match/match";
 
 describe('my-sport-server PACT', () => {
 
@@ -40,7 +38,6 @@ describe('my-sport-server PACT', () => {
 			lastName: user.lastName,
 			phoneNumber: user.phoneNumber,
 			password: user.password,
-			matchingPassword: user.matchingPassword,
 			email: user.email
 		}
 
@@ -52,20 +49,19 @@ describe('my-sport-server PACT', () => {
 		creatingUser.lastName = 'nguyen';
 		creatingUser.email = 'xuanchuongdp@gmail.com';
 		creatingUser.password = '123456';
-		creatingUser.matchingPassword = '123456';
 		creatingUser.phoneNumber = '0986123123';
 		return creatingUser;
 	}
 
-	function createMatch() {
-		const creatingMatch = new Match();
-		creatingMatch.title = 'title';
-		creatingMatch.description = 'nguyen';
-		creatingMatch.location = 'xuanchuongdp@gmail.com';
-		creatingMatch.numberOfPlayers = 10;
-		creatingMatch.startDate = '13-12-2020';
-		return creatingMatch;
-	}
+	// function createMatch() {
+	// 	const creatingMatch = new Match();
+	// 	creatingMatch.title = 'title';
+	// 	creatingMatch.description = 'nguyen';
+	// 	creatingMatch.location = 'xuanchuongdp@gmail.com';
+	// 	creatingMatch.numberOfPlayers = 10;
+	// 	creatingMatch.startDate = '13-12-2020';
+	// 	return creatingMatch;
+	// }
 
 	describe('user api', () => {
 		beforeAll(async () => {

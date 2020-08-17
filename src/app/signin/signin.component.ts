@@ -5,65 +5,58 @@ import {UserService} from "../services/user.service";
 import {User} from "../core/auth/user";
 
 @Component({
-    selector: 'app-signin',
-    templateUrl: './signin.component.html',
-    styleUrls: ['./signin.component.scss']
+	selector: 'app-signin',
+	templateUrl: './signin.component.html',
+	styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
 
-    registerForm: FormGroup;
-    error: string;
-    submitted = false;
-    loading = false;
+	registerForm: FormGroup;
+	error: string;
+	submitted = false;
+	loading = false;
 
-    constructor(
-        private formBuilder: FormBuilder,
-        private router: Router,
-        private userService: UserService
-    ) {
-    }
+	constructor(
+		private formBuilder: FormBuilder,
+		private router: Router,
+		private userService: UserService
+	) {
+	}
 
-    ngOnInit() {
-        this.registerForm = this.formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
-            email: ['', [Validators.required, Validators.email]],
-            password: ['', [Validators.required, Validators.minLength(6)]],
-            matchingPassword: ['', [Validators.required, Validators.minLength(6)]],
-            phoneNumber: ['', [Validators.required]]
-        });
-    }
+	ngOnInit() {
+		this.registerForm = this.formBuilder.group({
+			firstName: ['', Validators.required],
+			lastName: ['', Validators.required],
+			email: ['', [Validators.required, Validators.email]],
+			password: ['', [Validators.required, Validators.minLength(6)]],
+			phoneNumber: ['', [Validators.required]]
+		});
+	}
 
-    get f() {
-        return this.registerForm.controls;
-    }
+	get f() {
+		return this.registerForm.controls;
+	}
 
-    onSubmit() {
-        this.submitted = true;
+	onSubmit() {
+		this.submitted = true;
 
-        if (this.registerForm.invalid) {
-            return;
-        }
-        const user = new User();
-        user.email = this.registerForm.value.email;
-        user.firstName = this.registerForm.value.firstName;
-        user.lastName = this.registerForm.value.lastName;
-        user.password = this.registerForm.value.password;
-        user.matchingPassword = this.registerForm.value.matchingPassword;
-        user.phoneNumber = this.registerForm.value.phoneNumber;
-        this.userService.create(user)
-            .then(createdUser => {
-                if (createdUser == undefined) {
-                    throw new Error("register fail");
-                }
-            console.log("register successfully: " + createdUser);
-            this.loading = true;
-            this.router.navigate(['/login']).then(() => {
-            });
-        })
-            .catch(() => {
-                alert("register fail");
-            })
+		if (this.registerForm.invalid) {
+			return;
+		}
+		const user = new User();
+		Object.assign(user, this.registerForm.value);
+		this.userService.create(user)
+			.then(createdUser => {
+				if (createdUser == undefined) {
+					throw new Error("register fail");
+				}
+				this.loading = true;
+				this.router.navigate(['/login']).then(() => {
+				});
+			})
+			.catch(() => {
+				alert("register fail");
+			})
 
-    }
+	}
 }
