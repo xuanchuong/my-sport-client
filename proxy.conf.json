@@ -1,6 +1,11 @@
 {
   "/rest/api/v1": {
-    "target": "http://localhost:8080",
+    "target": "http://18.222.182.193:8082",
+    "secure": false
+  },
+  "/oauth/token": {
+    "target": "http://18.222.182.193:8082",
     "secure": false
   }
+
 }

@@ -4,7 +4,6 @@ import {of} from "rxjs";
 
 interface Config {
   API_BASE: string,
-  serverUrl: string,
   loginUrl: string;
   clientId: string;
   clientSecret: string;
@@ -25,8 +24,7 @@ export class ConfigService {
   load(): Promise<any> {
     this.config = {
       API_BASE: '/rest/api/v1/',
-      serverUrl: 'http://localhost:8080',
-      loginUrl: 'http://localhost:8080/oauth/token',
+      loginUrl: '/oauth/token',
       clientId: 'xuanchuongdp',
       clientSecret: 'secret',
       signinUrl: '/rest/api/v1/user/create'
