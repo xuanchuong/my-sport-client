@@ -6,7 +6,6 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
-import {ProfileComponent} from './profile/profile.component';
 import {HomeComponent} from './home/home.component';
 import {AppFooterComponent} from './app-footer/app-footer.component';
 import {LoginComponent} from './login/login.component';
@@ -18,16 +17,15 @@ import {SigninComponent} from './signin/signin.component';
 import {ConfigService, configServiceInitializerFactory} from './services/config.service';
 import {RequestHeadersInterceptorService} from "./core/html/interceptors/request-headers-interceptor.service";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-import { MatchDetailComponent } from './match/match-detail/match-detail.component';
-import { MatchListComponent } from './match/match-list/match-list.component';
-import { MatchCreationComponent } from './match/match-creation/match-creation.component';
+import {MatchDetailComponent} from './match/match-detail/match-detail.component';
+import {MatchListComponent} from './match/match-list/match-list.component';
+import {MatchCreationComponent} from './match/match-creation/match-creation.component';
 import {TokenInterceptor} from "./core/auth/token.interceptor";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ProfileComponent,
     HomeComponent,
     AppFooterComponent,
     LoginComponent,
