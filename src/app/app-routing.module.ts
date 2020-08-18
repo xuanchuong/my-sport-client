@@ -10,7 +10,7 @@ import {MatchCreationComponent} from "./match/match-creation/match-creation.comp
 const routes: Routes = [
   {path:"home", component:DashboardComponent},
   {path:"", component:DashboardComponent},
-  {path: "contact", component:ProfileComponent},
+  {path: "account", component:ProfileComponent},
   {path: "login", component:LoginComponent},
   {path: "signin", component: SigninComponent},
   {path: "matches/:matchId", component: MatchDetailComponent},

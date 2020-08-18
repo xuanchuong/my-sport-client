@@ -16,13 +16,15 @@
                         [class.selected]="'login' === selectedItem">
                         <a  routerLink="login">login</a>
                     </li>
-                    <li (click)="onSelect('match-creation')" *ngIf="isLoggedIn$ | async">
+                    <li (click)="onSelect('match-creation')" *ngIf="isLoggedIn$ | async"
+                        [class.selected]="'match-creation' === selectedItem">
                         <a routerLink="match/create">create match</a>
                     </li>
                     <li (click)="onLogout()" *ngIf="isLoggedIn$ | async">
                         <a>logout</a>
                     </li>
-                    <li *ngIf="!(isLoggedIn$ | async)">
+                    <li *ngIf="!(isLoggedIn$ | async)" (click)="onSelect('sign-in')"
+                        [class.selected]="'sign-in' === selectedItem">
                       <a routerLink="signin">signin</a>
                     </li>
                 </ul>
