@@ -11,17 +11,13 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn$: Observable<boolean>;
 
-  navigatorItems: string[] = [
-    "home", "account"
-  ];
-
   selectedItem: string;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.isLoggedIn$ = this.authService.isLoggedIn;
-    this.selectedItem = this.navigatorItems[0];
+    this.selectedItem = 'home';
   }
 
   onSelect(item: string): void {

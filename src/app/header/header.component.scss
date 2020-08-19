@@ -1,8 +1,7 @@
-@import "../utils/variables";
-@import "../utils/mixins";
+@import "src/assets/style/variables";
+@import "src/assets/style/mixins";
 
 .layout-topbar {
-    padding: 17px 17px 24px 17px;
     position: relative;
     transition: all 0.5s;
     margin-left: auto;

@@ -1,7 +1,7 @@
-@import "./utils/variables";
-@import "./utils/clearfix";
-@import "./utils/utils/utils";
-@import "./utils/mixins";
+@import "src/assets/style/variables";
+@import "src/assets/style/clearfix";
+@import "src/assets/style/utils";
+@import "src/assets/style/mixins";
 
 .layout-wrapper {
 	.layout-main {

@@ -1,34 +1,37 @@
 <div class="layout-topbar">
-    <div class="container">
-        <section class="navigator-bar masthead-wrap">
-            <div class="my-avatar">
-                <a routerLink="/home">
-                    <img alt="avt" src="assets/img/me.svg">
-                </a>
-            </div>
-            <div class="navigator-bar left-side-navigator-bar">
-                <ul>
-                    <li *ngFor="let item of navigatorItems" (click)="onSelect(item)"
-                        [class.selected]="item === selectedItem">
-                            <a routerLink="/{{item}}">{{item}}</a>
-                    </li>
-                    <li *ngIf="!(isLoggedIn$ | async)" (click)="onSelect('login')"
-                        [class.selected]="'login' === selectedItem">
-                        <a  routerLink="login">login</a>
-                    </li>
-                    <li (click)="onSelect('match-creation')" *ngIf="isLoggedIn$ | async"
-                        [class.selected]="'match-creation' === selectedItem">
-                        <a routerLink="match/create">create match</a>
-                    </li>
-                    <li (click)="onLogout()" *ngIf="isLoggedIn$ | async">
-                        <a>logout</a>
-                    </li>
-                    <li *ngIf="!(isLoggedIn$ | async)" (click)="onSelect('sign-in')"
-                        [class.selected]="'sign-in' === selectedItem">
-                      <a routerLink="signin">signin</a>
-                    </li>
-                </ul>
-            </div>
-        </section>
-    </div>
+	<div class="container">
+		<section class="navigator-bar masthead-wrap">
+			<div class="my-avatar">
+				<a routerLink="/home">
+					<img alt="avt" src="assets/img/me.svg">
+				</a>
+			</div>
+			<div class="navigator-bar left-side-navigator-bar">
+				<ul>
+					<li (click)="onSelect('home')" [class.selected]="'home' === selectedItem">
+						<a routerLink="home">home</a>
+					</li>
+					<li *ngIf="!(isLoggedIn$ | async)" (click)="onSelect('login')"
+						[class.selected]="'login' === selectedItem">
+						<a routerLink="login">login</a>
+					</li>
+					<li (click)="onSelect('match-creation')" *ngIf="isLoggedIn$ | async"
+						[class.selected]="'match-creation' === selectedItem">
+						<a routerLink="match/create">create match</a>
+					</li>
+					<li (click)="onSelect('account')" *ngIf="isLoggedIn$ | async"
+						[class.selected]="'account' === selectedItem">
+						<a routerLink="account">account</a>
+					</li>
+					<li (click)="onLogout()" *ngIf="isLoggedIn$ | async">
+						<a>logout</a>
+					</li>
+					<li *ngIf="!(isLoggedIn$ | async)" (click)="onSelect('sign-in')"
+						[class.selected]="'sign-in' === selectedItem">
+						<a routerLink="signin">signin</a>
+					</li>
+				</ul>
+			</div>
+		</section>
+	</div>
 </div>

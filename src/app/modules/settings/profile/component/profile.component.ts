@@ -10,9 +10,6 @@ import {AuthService} from "../../../../core/auth/auth.service";
 export class ProfileComponent implements OnInit {
 
 	currentUser: User;
-	navigatorItems: string[] = [
-		"profile", "Password"
-	];
 
 	constructor(private authService: AuthService) {
 	}

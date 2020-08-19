@@ -11,7 +11,7 @@ const routes: Routes = [
 	{path: "", component: DashboardComponent},
 	{
 	  path: "account",
-      loadChildren: () => import('./modules/account/account.module').then(m => m.AccountModule)},
+      loadChildren: () => import('./modules/settings/setting.module').then(m => m.SettingModule)},
 	{path: "login", component: LoginComponent},
 	{path: "signin", component: SigninComponent},
 	{path: "matches/:matchId", component: MatchDetailComponent},
