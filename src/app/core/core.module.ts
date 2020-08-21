@@ -8,6 +8,8 @@ import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatNativeDateModule} from "@angular/material/core";
 
 
 @NgModule({
@@ -18,9 +20,18 @@ import {MatButtonModule} from "@angular/material/button";
 		MatCardModule,
 		MatInputModule,
 		MatFormFieldModule,
-		MatButtonModule
+		MatButtonModule,
+		MatProgressSpinnerModule
 	],
-	exports: [HeaderComponent, AppFooterComponent, RouterModule]
+	exports: [HeaderComponent, AppFooterComponent, RouterModule,
+		MatToolbarModule,
+		MatCardModule,
+		MatInputModule,
+		MatFormFieldModule,
+		MatButtonModule,
+		MatProgressSpinnerModule,
+		MatNativeDateModule
+	]
 })
 export class CoreModule {
 }

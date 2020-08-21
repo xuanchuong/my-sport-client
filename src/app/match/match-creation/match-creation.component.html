@@ -3,48 +3,60 @@
 	  id="create-match-form">
 	<div class="form-wrapper">
 		<div class="title input-field">
-			<label for="title">Tiêu đề</label>
-			<input type="text" id="title" name="title" formControlName="title"
-				   [ngClass]="{ 'is-invalid': submitted && f.title.errors }"/>
-			<div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-				<div *ngIf="f.title.errors.required">title is required</div>
-			</div>
+			<mat-form-field>
+				<mat-label>Tiêu đề</mat-label>
+				<input matInput type="text" id="title" name="title" formControlName="title"
+					   [ngClass]="{ 'is-invalid': submitted && f.title.errors }"/>
+				<div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+					<div *ngIf="f.title.errors.required">title is required</div>
+				</div>
+			</mat-form-field>
 		</div>
 		<div class="start-time input-field">
-			<label for="start-time">Thời gian</label>
-			<input type="date" id="start-time"  name="start-time" formControlName="startDate"
-				   [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }"/>
-			<div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
-				<div *ngIf="f.startDate.errors.required">start Date is required</div>
-			</div>
-			<div *ngIf="f.startDate.errors" class="invalid-feedback">
-				<div *ngIf="f.startDate.errors.invalidDate">start date is invalid</div>
-			</div>
+			<mat-form-field>
+				<mat-label>Thời gian</mat-label>
+				<input matInput formControlName="startDate" [matDatepicker]="picker">
+				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+				<div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
+					<div *ngIf="f.startDate.errors.required">start Date is required</div>
+				</div>
+				<div *ngIf="f.startDate.errors" class="invalid-feedback">
+					<div *ngIf="f.startDate.errors.invalidDate">start date is invalid</div>
+				</div>
+			</mat-form-field>
 		</div>
 		<div class="location input-field">
-			<label for="location">Địa điểm</label>
-			<input type="text" id="location" name="location" formControlName="location"
-				   [ngClass]="{ 'is-invalid': submitted && f.location.errors }"/>
-			<div *ngIf="submitted && f.location.errors" class="invalid-feedback">
-				<div *ngIf="f.location.errors.required">location is required</div>
-			</div>
+			<mat-form-field>
+				<mat-label>Địa điểm</mat-label>
+				<input matInput type="text" id="location" name="location" formControlName="location"
+					   [ngClass]="{ 'is-invalid': submitted && f.location.errors }"/>
+				<div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+					<div *ngIf="f.location.errors.required">location is required</div>
+				</div>
+			</mat-form-field>
 		</div>
 		<div class="player-number input-field">
-			<label for="number-players">số lượng cầu thủ</label>
-			<input type="number" id="number-players" formControlName="numberOfPlayers" name="number-players"
-				   [ngClass]="{ 'is-invalid': submitted && f.numberOfPlayers.errors }"/>
-			<div *ngIf="submitted && f.numberOfPlayers.errors" class="invalid-feedback">
-				<div *ngIf="f.numberOfPlayers.errors.required">numberOfPlayers is required</div>
-				<div *ngIf="f.numberOfPlayers.errors.min">numberOfPlayers is too small</div>
-			</div>
+			<mat-form-field>
+				<mat-label>số lượng cầu thủ</mat-label>
+				<input matInput type="number" id="number-players" formControlName="numberOfPlayers"
+					   name="number-players"
+					   [ngClass]="{ 'is-invalid': submitted && f.numberOfPlayers.errors }"/>
+				<div *ngIf="submitted && f.numberOfPlayers.errors" class="invalid-feedback">
+					<div *ngIf="f.numberOfPlayers.errors.required">numberOfPlayers is required</div>
+					<div *ngIf="f.numberOfPlayers.errors.min">numberOfPlayers is too small</div>
+				</div>
+			</mat-form-field>
 		</div>
 		<div class="description input-field">
-			<label for="description">Mô tả</label>
-			<input type="text" id="description" name="description" formControlName="description"
-				   [ngClass]="{ 'is-invalid': submitted && f.description.errors }"/>
-			<div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-				<div *ngIf="f.description.errors.required">description is required</div>
-			</div>
+			<mat-form-field>
+				<mat-label>Mô tả</mat-label>
+				<input matInput type="text" id="description" name="description" formControlName="description"
+					   [ngClass]="{ 'is-invalid': submitted && f.description.errors }"/>
+				<div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+					<div *ngIf="f.description.errors.required">description is required</div>
+				</div>
+			</mat-form-field>
 		</div>
 		<div class="form-actions">
 			<div class="left-div">

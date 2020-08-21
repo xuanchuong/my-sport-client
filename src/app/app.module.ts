@@ -19,6 +19,7 @@ import {MatchListComponent} from './match/match-list/match-list.component';
 import {MatchCreationComponent} from './match/match-creation/match-creation.component';
 import {TokenInterceptor} from "./core/auth/token.interceptor";
 import {CoreModule} from "./core/core.module";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 @NgModule({
 	declarations: [
@@ -38,7 +39,8 @@ import {CoreModule} from "./core/core.module";
 		ReactiveFormsModule,
 		BrowserAnimationsModule,
 		MatSnackBarModule,
-		CoreModule
+		CoreModule,
+		MatDatepickerModule
 	],
 	providers: [
 		ConfigService, {
