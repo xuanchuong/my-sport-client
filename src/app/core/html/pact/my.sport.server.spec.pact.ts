@@ -7,6 +7,7 @@ import {Matchers} from '@pact-foundation/pact';
 import {PactWrapper} from "./pact-wrapper";
 import {RouterTestingModule} from "@angular/router/testing";
 import {ConfigService} from "../../../services/config.service";
+import {SharedModule} from "../../../shared/shared.module";
 
 describe('my-sport-server PACT', () => {
 
@@ -19,7 +20,7 @@ describe('my-sport-server PACT', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [HttpClientModule, RouterTestingModule],
+			imports: [HttpClientModule, RouterTestingModule, SharedModule],
 			providers: [UserService, ConfigService],
 		});
 	});
@@ -95,35 +96,4 @@ describe('my-sport-server PACT', () => {
 		});
 	});
 
-	// describe('match api', () => {
-	// 	beforeAll(async () => {
-	// 		await provider.addInteraction({
-	// 			state: `get all match`,
-	// 			uponReceiving: 'any user can get all available match',
-	// 			withRequest: {
-	// 				method: "GET",
-	// 				path: '/rest/api/v1/match/all'
-	// 			},
-	// 			willRespondWith: {
-	// 				status: OK,
-	// 				headers: {
-	// 					"Content-Type": "application/json; charset=UTF-8"
-	// 				},
-	// 				body: {
-	// 					id: Matchers.term({ generate: '123', matcher: '\\d+' }),
-	// 					ownerId: Matchers.term({ generate: '123', matcher: '\\d+' }),
-	// 					location: Matchers.string(user.firstName),
-	// 					title: Matchers.string(user.lastName),
-	// 					description: Matchers.email(user.email),
-	// 					numberOfPlayers: Matchers.term({ generate: '123', matcher: '\\d+' })
-	// 				},
-	// 			},
-	// 		});
-	// 	});
-	//
-	// 	it('should get match successfully', async () => {
-	// 		const matchService = TestBed.inject(MatchService);
-	// 		await matchService.getAll();
-	// 	});
-	// });
 });

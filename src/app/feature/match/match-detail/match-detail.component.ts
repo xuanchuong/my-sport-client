@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Match} from "../match";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatchService} from "../match.service";
-import {User} from "../../core/auth/user";
-import {UserService} from "../../services/user.service";
+import {User} from "../../../core/auth/user";
+import {UserService} from "../../../services/user.service";
 
 @Component({
 	selector: 'app-match-detail',
@@ -12,8 +12,8 @@ import {UserService} from "../../services/user.service";
 })
 export class MatchDetailComponent {
 
-	private match: Match;
-	private owner: User;
+	match: Match;
+	owner: User;
 
 	constructor(
 		private route: ActivatedRoute,

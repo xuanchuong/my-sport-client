@@ -1,0 +1,53 @@
+<mat-grid-list cols="2" rowHeight="100px">
+	<mat-grid-tile>
+		<div class="match-info" *ngIf="match != null">
+			<div class="title-box">
+				<label class="title">{{match.title}}</label>
+			</div>
+			<div class="summary-detail">
+				<div>
+					<h2>
+						<em class="fal fa-info"></em>
+						Detail
+					</h2>
+				</div>
+				<div class="summary-details-container">
+					<div class="qs-details-label-cell">
+						<span>thời gian: </span>
+						<label> {{match.startDate}}</label>
+					</div>
+					<div class="qs-details-label-cell">
+						<span>địa điểm: </span>
+						<label> {{match.location}}</label>
+					</div>
+					<div class="qs-details-label-cell">
+						<span>mô tả: </span>
+						<label>{{match.description}}</label>
+					</div>
+					<div class="qs-details-label-cell">
+						<span>số lượng thành viên: </span>
+						<label>{{match.numberOfPlayers}}</label>
+					</div>
+					<div class="qs-details-label-cell">
+						<span>người tham gia: </span>
+						<label>{{match.participantIds.length}}</label>
+					</div>
+					<div class="qs-details-label-cell">
+						<span>lien he: </span>
+						<label>{{owner.firstName}}</label>
+					</div>
+					<div class="form-actions">
+						<div class="left-div">
+							<input type="button" value="delete" (click)="deleteTheMatch()">
+						</div>
+						<div class="right-div">
+							<input type="button" value="join" (click)="joinTheMatch()">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</mat-grid-tile>
+	<mat-grid-tile>
+	</mat-grid-tile>
+</mat-grid-list>

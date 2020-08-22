@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {Match} from "./match";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import {TokenInterceptor} from "../core/auth/token.interceptor";
-import {AuthService} from "../core/auth/auth.service";
+import {TokenInterceptor} from "../../core/auth/token.interceptor";
+import {AuthService} from "../../core/auth/auth.service";
 
 @Injectable({
 	providedIn: 'root'

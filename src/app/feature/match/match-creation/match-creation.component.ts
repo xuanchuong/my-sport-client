@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Match} from "../match";
 import {MatchService} from "../match.service";
 import {Router} from "@angular/router";
@@ -18,8 +18,7 @@ export class MatchCreationComponent implements OnInit {
 
 	constructor(
 		private router: Router,
-		private matchService: MatchService,
-		private datePipe: DatePipe
+		private matchService: MatchService
 	) {
 	}
 
