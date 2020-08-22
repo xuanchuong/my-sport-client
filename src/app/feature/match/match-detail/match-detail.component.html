@@ -1,53 +1,60 @@
-<mat-grid-list cols="2" rowHeight="100px">
-	<mat-grid-tile>
-		<div class="match-info" *ngIf="match != null">
-			<div class="title-box">
-				<label class="title">{{match.title}}</label>
-			</div>
-			<div class="summary-detail">
-				<div>
-					<h2>
-						<em class="fal fa-info"></em>
-						Detail
-					</h2>
-				</div>
-				<div class="summary-details-container">
-					<div class="qs-details-label-cell">
+<mat-grid-list *ngIf="match" cols="3">
+	<mat-grid-tile class="match-info">
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title>Thông tin trận </mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<div class="general-info">
+					<div>
 						<span>thời gian: </span>
 						<label> {{match.startDate}}</label>
 					</div>
-					<div class="qs-details-label-cell">
+					<div>
 						<span>địa điểm: </span>
 						<label> {{match.location}}</label>
 					</div>
-					<div class="qs-details-label-cell">
+					<div>
 						<span>mô tả: </span>
 						<label>{{match.description}}</label>
 					</div>
-					<div class="qs-details-label-cell">
+					<div>
 						<span>số lượng thành viên: </span>
 						<label>{{match.numberOfPlayers}}</label>
 					</div>
-					<div class="qs-details-label-cell">
-						<span>người tham gia: </span>
-						<label>{{match.participantIds.length}}</label>
-					</div>
-					<div class="qs-details-label-cell">
+				</div>
+				<div class="owner-info">
+					<div>
 						<span>lien he: </span>
 						<label>{{owner.firstName}}</label>
 					</div>
-					<div class="form-actions">
-						<div class="left-div">
-							<input type="button" value="delete" (click)="deleteTheMatch()">
-						</div>
-						<div class="right-div">
-							<input type="button" value="join" (click)="joinTheMatch()">
-						</div>
+				</div>
+			</mat-card-content>
+		</mat-card>
+	</mat-grid-tile>
+	<mat-grid-tile class="participant">
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title>danh sach nguoi choi</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<div class="participant" *ngFor="let player of match.participantIds">
+					<div>
+						<label>nguoi choi {{player}}</label>
 					</div>
 				</div>
-			</div>
-		</div>
+			</mat-card-content>
+		</mat-card>
+
 	</mat-grid-tile>
-	<mat-grid-tile>
+	<mat-grid-tile class="match-action">
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title>Tham gia tran dau</mat-card-title>
+			</mat-card-header>
+			<mat-card-actions>
+				<button mat-button (click)="joinTheMatch()">join</button>
+			</mat-card-actions>
+		</mat-card>
 	</mat-grid-tile>
 </mat-grid-list>
