@@ -1,37 +1,19 @@
-<ng-container *ngIf="currentUser; else spinner">
-	<div class="form-wrapper">
-		<div class="contact">
-			<header>
-				<h2>Your Account</h2>
-			</header>
-			<br>
-			<mat-card>
-				<section class="account-container">
-					<div class="main-container">
-						<div>
-							<div>
-								<label class="control-label">Email</label>
-							</div>
-							<div>{{currentUser.email}}</div>
-						</div>
-						<div>
-							<div class="col-md-3">
-								<label class="control-label">Name</label>
-							</div>
-							<div>{{currentUser.firstName}} {{currentUser.lastName}}</div>
-						</div>
-						<div>
-							<div>
-								<label class="control-label">Phone number</label>
-							</div>
-							<div>{{currentUser.phoneNumber}}</div>
-						</div>
-					</div>
-				</section>
-			</mat-card>
+<mat-card *ngIf="currentUser; else spinner">
+	<mat-card-title>Hi, I'm {{currentUser.firstName}} {{currentUser.lastName}}</mat-card-title>
+	<mat-card-content>
+		<div class="about">
+			<div>
+				<mat-icon aria-hidden="false" aria-label="email icon">email</mat-icon>
+				<mat-label>{{currentUser.email}}</mat-label>
+			</div>
+			<div>
+				<mat-icon aria-hidden="false" aria-label="phone icon">phone</mat-icon>
+				<mat-label>{{currentUser.phoneNumber}}</mat-label>
+			</div>
 		</div>
-	</div>
-</ng-container>
+
+	</mat-card-content>
+</mat-card>
 
 <ng-template #spinner>
 	<mat-spinner diameter="55"></mat-spinner>
