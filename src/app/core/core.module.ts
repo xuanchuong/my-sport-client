@@ -1,36 +1,19 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {HeaderComponent} from "./layout/header/header.component";
-import {AppFooterComponent} from "./layout/app-footer/app-footer.component";
-import {RouterModule} from "@angular/router";
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatCardModule} from "@angular/material/card";
-import {MatInputModule} from "@angular/material/input";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatButtonModule} from "@angular/material/button";
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {MatNativeDateModule} from "@angular/material/core";
+import { NgModule } from '@angular/core';
+import { SharedModule } from '../shared/shared.module';
+import { AppFooterComponent } from "./layout/app-footer/app-footer.component";
+import { HeaderComponent } from "./layout/header/header.component";
 
 
 @NgModule({
-	declarations: [HeaderComponent, AppFooterComponent],
+	declarations: [
+		HeaderComponent,
+		AppFooterComponent],
 	imports: [
-		CommonModule, RouterModule,
-		MatToolbarModule,
-		MatCardModule,
-		MatInputModule,
-		MatFormFieldModule,
-		MatButtonModule,
-		MatProgressSpinnerModule
+		SharedModule
 	],
-	exports: [HeaderComponent, AppFooterComponent, RouterModule,
-		MatToolbarModule,
-		MatCardModule,
-		MatInputModule,
-		MatFormFieldModule,
-		MatButtonModule,
-		MatProgressSpinnerModule,
-		MatNativeDateModule
+	exports: [
+		HeaderComponent, 
+		AppFooterComponent
 	]
 })
 export class CoreModule {

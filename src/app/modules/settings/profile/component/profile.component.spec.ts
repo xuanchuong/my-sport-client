@@ -1,12 +1,12 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from "@angular/router/testing";
+import { SharedModule } from 'src/app/shared/shared.module';
+import { AuthService } from "../../../../core/auth/auth.service";
+import { User } from "../../../../core/auth/user";
+import { ConfigService } from "../../../../services/config.service";
+import { ProfileComponent } from "./profile.component";
 
-import {RouterTestingModule} from "@angular/router/testing";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {AuthService} from "../../../../core/auth/auth.service";
-import {ConfigService} from "../../../../services/config.service";
-import {User} from "../../../../core/auth/user";
-import {ProfileModule} from "../profile.module";
-import {ProfileComponent} from "./profile.component";
 
 describe('ProfileComponent', () => {
 	let component: ProfileComponent;
@@ -16,7 +16,7 @@ describe('ProfileComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [ProfileComponent],
-			imports: [RouterTestingModule, HttpClientTestingModule, ProfileModule],
+			imports: [RouterTestingModule, HttpClientTestingModule, SharedModule],
 			providers: [ConfigService]
 		})
 			.compileComponents();

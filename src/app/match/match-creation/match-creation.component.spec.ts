@@ -1,10 +1,11 @@
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from "@angular/router/testing";
+import { SharedModule } from 'src/app/shared/shared.module';
+import { ConfigService } from "../../services/config.service";
 import { MatchCreationComponent } from './match-creation.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {RouterTestingModule} from "@angular/router/testing";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {ConfigService} from "../../services/config.service";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 describe('MatchCreationComponent', () => {
 	let component: MatchCreationComponent;
@@ -14,7 +15,8 @@ describe('MatchCreationComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [ MatchCreationComponent ],
 			imports: [
-				ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule
+				SharedModule, RouterTestingModule, HttpClientTestingModule,
+				BrowserAnimationsModule
 			],
 			providers: [ConfigService]
 		})
