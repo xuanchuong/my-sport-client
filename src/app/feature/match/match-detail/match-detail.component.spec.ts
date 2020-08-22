@@ -6,6 +6,7 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {ReactiveFormsModule} from "@angular/forms";
 import {ConfigService} from "../../../services/config.service";
 import {MatGridListModule} from "@angular/material/grid-list";
+import {MatCardModule} from "@angular/material/card";
 
 describe('MatchDetailComponent', () => {
     let component: MatchDetailComponent;
@@ -16,7 +17,7 @@ describe('MatchDetailComponent', () => {
             declarations: [MatchDetailComponent],
             imports: [
                 HttpClientTestingModule, RouterTestingModule, ReactiveFormsModule,
-                MatGridListModule
+                MatGridListModule, MatCardModule
             ],
             providers: [ConfigService]
         })

@@ -10,7 +10,6 @@ import {CoreModule} from "./core/core.module";
 import {RequestHeadersInterceptorService} from "./core/html/interceptors/request-headers-interceptor.service";
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {HomeComponent} from './home/home.component';
-import {LoginComponent} from './login/login.component';
 import {ConfigService, configServiceInitializerFactory} from './services/config.service';
 import {SharedModule} from './shared/shared.module';
 import {SigninComponent} from './signin/signin.component';
@@ -21,7 +20,6 @@ import {FeatureModule} from "./feature/feature.module";
 	declarations: [
 		AppComponent,
 		HomeComponent,
-		LoginComponent,
 		DashboardComponent,
 		SigninComponent,
 	],

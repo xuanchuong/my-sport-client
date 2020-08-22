@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../../core/auth/user";
-import {AuthService} from "../../../core/auth/auth.service";
+import {User} from "../../core/auth/user";
+import {AuthService} from "../../core/auth/auth.service";
 
 @Component({
 	templateUrl: './profile.component.html',

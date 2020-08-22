@@ -1,14 +1,16 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatchModule} from "./match/match.module";
-import {ProfileModule} from "./profile/profile.module";
+import {LoginComponent} from "./login/login.component";
+import {SharedModule} from "../shared/shared.module";
+import {ProfileComponent} from "./profile/profile.component";
 
 @NgModule({
-    declarations: [],
+    declarations: [LoginComponent, ProfileComponent],
     imports: [
-        CommonModule
+        CommonModule, SharedModule
     ],
-    exports: [MatchModule, ProfileModule]
+    exports: [MatchModule, ProfileComponent, LoginComponent]
 })
 export class FeatureModule {
 }
