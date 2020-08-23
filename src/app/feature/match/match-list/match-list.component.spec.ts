@@ -4,6 +4,7 @@ import {MatchListComponent} from './match-list.component';
 import {RouterTestingModule} from "@angular/router/testing";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {ConfigService} from "../../../services/config.service";
+import {SharedModule} from "../../../shared/shared.module";
 
 describe('MatchListComponent', () => {
   let component: MatchListComponent;
@@ -13,7 +14,7 @@ describe('MatchListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ MatchListComponent ],
       imports: [
-        RouterTestingModule, HttpClientTestingModule
+        RouterTestingModule, HttpClientTestingModule, SharedModule
       ],
       providers: [ConfigService]
     })

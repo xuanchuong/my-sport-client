@@ -5,14 +5,13 @@ import {DashboardComponent} from './feature/dashboard/dashboard.component';
 import {SigninComponent} from "./feature/signin/signin.component";
 import {MatchDetailComponent} from "./feature/match/match-detail/match-detail.component";
 import {MatchCreationComponent} from "./feature/match/match-creation/match-creation.component";
-import {ProfileComponent} from "./feature/profile/profile.component";
 
 const routes: Routes = [
     {path: "home", component: DashboardComponent},
     {path: "", component: DashboardComponent},
     {
         path: "account",
-        component: ProfileComponent
+        loadChildren: () => import('./feature/profile/profile.module').then(m => m.ProfileModule)
     },
     {path: "login", component: LoginComponent},
     {path: "signin", component: SigninComponent},
