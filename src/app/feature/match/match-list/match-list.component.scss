@@ -1,9 +1,17 @@
 mat-card {
-    margin: 20px;
+    margin-bottom: 20px;
 
     &:hover {
         box-shadow: 0 2px 4px 1px rgba(0, 0, 0, .13);
         cursor: pointer;
         border-color: #1ba0e2;
+    }
+
+    .slot {
+        display: flex;
+        justify-content: flex-end;
+        .slot-container {
+
+        }
     }
 }

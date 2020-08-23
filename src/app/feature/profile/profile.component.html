@@ -1,19 +1,31 @@
-<mat-card *ngIf="currentUser; else spinner">
-	<mat-card-title>Hi, I'm {{currentUser.firstName}} {{currentUser.lastName}}</mat-card-title>
-	<mat-card-content>
-		<div class="about">
-			<div>
-				<mat-icon aria-hidden="false" aria-label="email icon">email</mat-icon>
-				<mat-label>{{currentUser.email}}</mat-label>
-			</div>
-			<div>
-				<mat-icon aria-hidden="false" aria-label="phone icon">phone</mat-icon>
-				<mat-label>{{currentUser.phoneNumber}}</mat-label>
+<mat-grid-list cols="4" class="profile-wrapper">
+	<mat-grid-tile colspan="1" class="identification">
+		<div class="avt-wrapper">
+			<div class="avt">
+				<img src="../../../assets/img/unknown-avt.png" alt="avt">
 			</div>
 		</div>
+	</mat-grid-tile>
+	<mat-grid-tile colspan="3" class="general-info">
+		<mat-card *ngIf="currentUser; else spinner" style="width: 100%; height: 100%">
+			<mat-card-title>Hi, I'm {{currentUser.firstName}} {{currentUser.lastName}}</mat-card-title>
+			<mat-card-content>
+				<div class="about">
+					<div class="contact-detail">
+						<mat-icon aria-hidden="false" aria-label="email icon">email</mat-icon>
+						<mat-label>{{currentUser.email}}</mat-label>
+					</div>
+					<div class="contact-detail">
+						<mat-icon aria-hidden="false" aria-label="phone icon">phone</mat-icon>
+						<mat-label>{{currentUser.phoneNumber}}</mat-label>
+					</div>
+				</div>
 
-	</mat-card-content>
-</mat-card>
+			</mat-card-content>
+		</mat-card>
+	</mat-grid-tile>
+</mat-grid-list>
+
 
 <ng-template #spinner>
 	<mat-spinner diameter="55"></mat-spinner>

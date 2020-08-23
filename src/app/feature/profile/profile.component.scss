@@ -1,0 +1,43 @@
+.profile-wrapper {
+    max-width: 1064px;
+    margin: 48px auto 32px;
+
+    .identification {
+        border-style: solid;
+        border-width: 1px;
+        border-color: rgb(221, 221, 221);
+        border-radius: 12px;
+
+        .avt-wrapper {
+            width: 128px;
+            height: 128px;
+            margin: 24px auto 32px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            .avt {
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
+    .general-info {
+        &mat-card-title {}
+        .about {
+            margin-top: 24px;
+            font-size: 16px;
+            .contact-detail {
+                margin-top: 24px;
+                display: flex;
+                align-content: center;
+                mat-icon {
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+}
