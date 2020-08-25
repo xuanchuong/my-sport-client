@@ -1,0 +1,43 @@
+<form [formGroup]="form">
+	<div>
+		<mat-form-field>
+			<mat-label>First name</mat-label>
+			<input matInput type="text" formControlName="firstName" class="form-control"
+				   [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"/>
+			<div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+				<div *ngIf="f.firstName.errors.required">First Name is required</div>
+			</div>
+		</mat-form-field>
+	</div>
+	<div>
+		<mat-form-field>
+			<mat-label>Last Name</mat-label>
+			<input matInput type="text" formControlName="lastName" class="form-control"
+				   [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"/>
+			<div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+				<div *ngIf="f.lastName.errors.required">Last name is required</div>
+			</div>
+		</mat-form-field>
+	</div>
+	<div>
+		<mat-form-field>
+			<mat-label>Phone Number</mat-label>
+			<input matInput type="text" formControlName="phoneNumber" class="form-control"
+				   [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }"/>
+			<div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+				<div *ngIf="f.phoneNumber.errors.required">Phone number is required</div>
+			</div>
+		</mat-form-field>
+	</div>
+	<div>
+		<mat-form-field>
+			<mat-label>Password</mat-label>
+			<input matInput type="password" formControlName="password" class="form-control"
+				   [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+			<div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+				<div *ngIf="f.password.errors.required">Password is required</div>
+			</div>
+		</mat-form-field>
+	</div>
+	<button mat-button (click)="updateAccount()">Save</button>
+</form>

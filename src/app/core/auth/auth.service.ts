@@ -11,7 +11,7 @@ import {UserService} from "../../services/user.service";
 import * as auth0 from 'auth0-js';
 import {environment} from "../../../environments/environment";
 
-const accessTokenKey = 'access_token';
+const ACCESS_TOKEN_KEY = 'access_token';
 const refreshTokenKey = 'refresh_token';
 
 @Injectable({
@@ -48,31 +48,14 @@ export class AuthService {
 		this.initLoggedInPipe();
 	}
 
-	get isLoggedIn() {
-		return this.loggedIn.asObservable(); // {2}
-	}
-
-	getLoggedUser(): User {
-		return this.loggedUserSubject.value;
-	}
-
-	private initLoggedInPipe() {
-		if (this.getToken(accessTokenKey)) {
-			console.log('token is available');
-			this.loggedIn.next(true);
-		}
-	}
-
 	private initAccessTokenPipe() {
 		this.accessTokenSubject = new BehaviorSubject(this.accessToken);
 		this.accessToken$ = this.accessTokenSubject.asObservable().pipe(
 			switchMap(token => {
-				console.log(`check token valid or not ${!!token}`);
 				if (token && this.jwtHelper.isTokenExpired(token)) {
 					this.userLoading = true;
 					return this.loadAccessTokenUsingRefreshToken();
 				}
-				console.log(`access token available ${!!token}`);
 				if (token) {
 					this.loggedIn.next(true);
 				}
@@ -81,26 +64,8 @@ export class AuthService {
 		);
 	}
 
-	private loadAccessTokenUsingRefreshToken(): Observable<string> {
-		const token = this.getToken(refreshTokenKey);
-		if (!token || this.jwtHelper.isTokenExpired(token)) {
-			console.log('refresh token expired: must logout');
-			this.logout();
-			return EMPTY;
-		}
-		return this.loadAccessToken(false, token);
-	}
-
-	private get accessToken(): string {
-		const token = this.getToken(accessTokenKey);
-		return token && !this.jwtHelper.isTokenExpired(token) ? token : null;
-	}
-
-	private getToken(key: string): string {
-		return localStorage.getItem(key);
-	}
-
 	private initLoggedUserPipe() {
+		console.log('initLoggedUserPipe');
 		this.loggedUserSubject = new BehaviorSubject<User>(null);
 		this.userLoading = true;
 		this.loggedUser$ = this.loggedUserSubject.asObservable().pipe(
@@ -112,9 +77,49 @@ export class AuthService {
 			tap(() => this.userLoading = true),
 			switchMap(token => this.extractLoggedUser(token)))
 			.subscribe(user => {
+				console.log("load logged User subject");
 				this.userLoading = false;
 				this.loggedUserSubject.next(user);
 			});
+	}
+
+	private initLoggedInPipe() {
+		this.accessTokenSubject.asObservable().pipe(
+			tap(() => this.loggedIn.next(true))
+		);
+	}
+
+	get isLoggedIn() {
+		return this.loggedIn.asObservable(); // {2}
+	}
+
+	getLoggedUser(): BehaviorSubject<User> {
+		return this.loggedUserSubject;
+	}
+
+	private loadAccessTokenUsingRefreshToken(): Observable<string> {
+		const token = this.getToken(refreshTokenKey);
+		if (!token || this.jwtHelper.isTokenExpired(token)) {
+			console.log('refresh token expired: must logout');
+			this.logout().then();
+			return EMPTY;
+		}
+		return this.loadAccessToken(false, token);
+	}
+
+	private get accessToken(): string {
+		const token = this.getToken(ACCESS_TOKEN_KEY);
+		let accessToken: string = null;
+		console.log("token: " + token);
+		if (token && !this.jwtHelper.isTokenExpired(token)) {
+			accessToken = token;
+		}
+		console.log("access token: " + accessToken);
+		return accessToken;
+	}
+
+	private getToken(key: string): string {
+		return localStorage.getItem(key);
 	}
 
 	private extractLoggedUser(accessToken): Observable<User> {
@@ -127,7 +132,6 @@ export class AuthService {
 		return of(null);
 	}
 
-
 	login(username: string, password: string): Promise<string> {
 		return this.loadAccessToken(true, null, username, password).toPromise();
 	}
@@ -139,19 +143,19 @@ export class AuthService {
 	}
 
 	private clearToken() {
-		localStorage.removeItem(accessTokenKey);
+		localStorage.removeItem(ACCESS_TOKEN_KEY);
 		localStorage.removeItem(refreshTokenKey);
 		this.accessTokenSubject.next(null);
 	}
 
 	private storeToken(jwt: any): string {
 		console.log('store new key')
-		if (jwt && jwt[accessTokenKey]) {
-			const accessToken = jwt[accessTokenKey];
+		if (jwt && jwt[ACCESS_TOKEN_KEY]) {
+			const accessToken = jwt[ACCESS_TOKEN_KEY];
 			if (jwt[refreshTokenKey]) {
 				this.setToken(refreshTokenKey, jwt[refreshTokenKey]);
 			}
-			this.setToken(accessTokenKey, accessToken);
+			this.setToken(ACCESS_TOKEN_KEY, accessToken);
 			this.accessTokenSubject.next(accessToken);
 			return accessToken;
 		}

@@ -7,21 +7,24 @@
 		</div>
 	</mat-grid-tile>
 	<mat-grid-tile colspan="3" class="general-info">
-		<mat-card *ngIf="currentUser; else spinner" style="width: 100%; height: 100%">
-			<mat-card-title>Hi, I'm {{currentUser.firstName}} {{currentUser.lastName}}</mat-card-title>
+		<mat-card *ngIf="currentUser$ | async as user; else spinner" style="width: 100%; height: 100%">
+			<mat-card-title>Hi, I'm {{user.firstName}} {{user.lastName}}</mat-card-title>
 			<mat-card-content>
 				<div class="about">
 					<div class="contact-detail">
 						<mat-icon aria-hidden="false" aria-label="email icon">email</mat-icon>
-						<mat-label>{{currentUser.email}}</mat-label>
+						<mat-label>{{user.email}}</mat-label>
 					</div>
 					<div class="contact-detail">
 						<mat-icon aria-hidden="false" aria-label="phone icon">phone</mat-icon>
-						<mat-label>{{currentUser.phoneNumber}}</mat-label>
+						<mat-label>{{user.phoneNumber}}</mat-label>
 					</div>
 				</div>
 
 			</mat-card-content>
+			<mat-card-footer>
+				<button mat-button (click)="startEditingAccount()">Edit</button>
+			</mat-card-footer>
 		</mat-card>
 	</mat-grid-tile>
 </mat-grid-list>
