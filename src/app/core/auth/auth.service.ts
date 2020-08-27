@@ -194,6 +194,7 @@ export class AuthService {
 	interceptUrl(req: HttpRequest<any>): boolean {
 		return req.url.includes(this.config.config.API_BASE)
 			&& !req.url.startsWith(this.config.config.signinUrl)
+			&& !req.url.startsWith('/rest/api/v1/user/resetPass')
 			&& !req.url.endsWith('/rest/api/v1/match/all')
 			&& !req.headers.get('Authorization');
 	}

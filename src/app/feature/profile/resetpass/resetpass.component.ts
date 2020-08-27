@@ -1,15 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, Validators} from "@angular/forms";
+import {UserService} from "../../../services/user.service";
 
 @Component({
-  selector: 'app-resetpass',
-  templateUrl: './resetpass.component.html',
-  styleUrls: ['./resetpass.component.scss']
+	selector: 'app-resetpass',
+	templateUrl: './resetpass.component.html',
+	styleUrls: ['./resetpass.component.scss']
 })
 export class ResetpassComponent implements OnInit {
 
-  constructor() { }
+	email: FormControl = new FormControl('', [Validators.required, Validators.email]);
 
-  ngOnInit(): void {
-  }
+	constructor(private userService: UserService) {
+	}
 
+	ngOnInit(): void {
+	}
+
+	sendResetRequest() {
+		this.userService.resetPassword(this.email.value).then(result => {
+			if (result) {
+				console.log('success');
+			}
+		}, error => {
+			console.error(error);
+		})
+	}
 }

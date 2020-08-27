@@ -41,6 +41,10 @@ export class UserService {
 		return this.http.put<boolean>(`${this.url}/update`, body, httpOptions).toPromise();
 	}
 
+	resetPassword(email: string): Promise<boolean> {
+		return this.http.post<boolean>(`${this.url}/resetPass?email=${email}`, {}).toPromise();
+	}
+
 	private static buildBodyRequest(user: User): string {
 		const data = {
 			'firstName': user.firstName,
