@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../core/auth/auth.service";
 import {User} from "../../../core/auth/user";
 import {Observable} from "rxjs";
+import {UserService} from "../../../services/user.service";
+import {Router} from "@angular/router";
 
 @Component({
 	selector: 'app-editing',
@@ -17,7 +19,9 @@ export class ProfileEditingComponent implements OnInit {
 
 	constructor(
 		private formBuilder: FormBuilder,
-		private authService: AuthService
+		private authService: AuthService,
+		private userService: UserService,
+		private router: Router
 	) {
 	}
 
@@ -41,6 +45,19 @@ export class ProfileEditingComponent implements OnInit {
 	}
 
 	updateAccount() {
-		console.log('update account');
+		if (this.form.invalid) {
+			this.form.markAllAsTouched();
+			return;
+		}
+		let user = new User();
+		Object.assign(user, this.form.getRawValue());
+		this.userService.update(user).then(result => {
+			if (result) {
+				this.router.navigate(['/account']).then();
+			}
+
+		}, error => {
+			console.error(error);
+		})
 	}
 }

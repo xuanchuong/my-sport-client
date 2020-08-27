@@ -26,6 +26,22 @@ export class UserService {
 	}
 
 	create(user: User): Promise<User> {
+		const body = UserService.buildBodyRequest(user);
+		const httpOptions = {
+			headers: new HttpHeaders({'Content-Type': 'application/json'})
+		}
+		return this.http.post<User>(`${this.url}/create`, body, httpOptions).toPromise();
+	}
+
+	update(user: User): Promise<boolean> {
+		const body = UserService.buildBodyRequest(user);
+		const httpOptions = {
+			headers: new HttpHeaders({'Content-Type': 'application/json'})
+		}
+		return this.http.put<boolean>(`${this.url}/update`, body, httpOptions).toPromise();
+	}
+
+	private static buildBodyRequest(user: User): string {
 		const data = {
 			'firstName': user.firstName,
 			'lastName': user.lastName,
@@ -33,10 +49,6 @@ export class UserService {
 			'email': user.email,
 			'password': user.password
 		}
-		const body = JSON.stringify(data);
-		const httpOptions = {
-			headers: new HttpHeaders({'Content-Type': 'application/json'})
-		}
-		return this.http.post<User>(`${this.url}/create`, body, httpOptions).toPromise();
+		return JSON.stringify(data);
 	}
 }
