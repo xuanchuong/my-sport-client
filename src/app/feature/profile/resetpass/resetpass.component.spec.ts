@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ResetpassComponent } from './resetpass.component';
+import {SharedModule} from '../../../shared/shared.module';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('ResetpassComponent', () => {
   let component: ResetpassComponent;
@@ -8,7 +11,8 @@ describe('ResetpassComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResetpassComponent ]
+      declarations: [ ResetpassComponent ],
+        imports: [SharedModule, HttpClientTestingModule, BrowserAnimationsModule]
     })
     .compileComponents();
   }));

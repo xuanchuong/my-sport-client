@@ -1,0 +1,6 @@
+{
+    "/rest/api/v1/user/*": "/user",
+    "/rest/api/v1/match/all": "/matches",
+    "/rest/api/v1/match/*": "/matches/1",
+    "/rest/api/v1/oauth/token": "/login"
+}
