@@ -8,7 +8,7 @@ import {
     MatToolbarModule, MatTooltipModule
 } from '@angular/material';
 import {RouterModule} from '@angular/router';
-import {MatGridListModule} from "@angular/material/grid-list";
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
