@@ -62,11 +62,11 @@ export class MatchCreationComponent implements OnInit {
 		match.numberOfPlayers = this.form.value.numberOfPlayers;
 
 		this.matchService.create(match)
-			.then(match => {
-				if (match == undefined) {
+			.then(result => {
+				if (result == undefined) {
 					throw new Error("create fail");
 				}
-				this.router.navigate(['/home']);
+				this.router.navigate(['/home']).then();
 			})
 			.catch(error => {
 				alert(error);
