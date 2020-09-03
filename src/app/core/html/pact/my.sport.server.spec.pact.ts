@@ -6,7 +6,6 @@ import {HttpClientModule} from "@angular/common/http";
 import {Matchers} from '@pact-foundation/pact';
 import {PactWrapper} from "./pact-wrapper";
 import {RouterTestingModule} from "@angular/router/testing";
-import {ConfigService} from "../../../services/config.service";
 import {SharedModule} from "../../../shared/shared.module";
 
 describe('my-sport-server PACT', () => {
@@ -21,7 +20,7 @@ describe('my-sport-server PACT', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [HttpClientModule, RouterTestingModule, SharedModule],
-			providers: [UserService, ConfigService],
+			providers: [UserService],
 		});
 	});
 

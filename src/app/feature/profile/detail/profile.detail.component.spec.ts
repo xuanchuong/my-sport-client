@@ -4,7 +4,6 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {SharedModule} from 'src/app/shared/shared.module';
 import {ProfileDetailComponent} from "./profile.detail.component";
 import {AuthService} from "../../../core/auth/auth.service";
-import {ConfigService} from "../../../services/config.service";
 import {User} from "../../../core/auth/user";
 import {BehaviorSubject} from "rxjs";
 
@@ -17,7 +16,6 @@ describe('ProfileComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ProfileDetailComponent],
       imports: [RouterTestingModule, HttpClientTestingModule, SharedModule],
-      providers: [ConfigService]
     }).compileComponents();
   }));
 

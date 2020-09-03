@@ -2,7 +2,6 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {RouterTestingModule} from "@angular/router/testing";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {ConfigService} from "../../../services/config.service";
 import {HeaderComponent} from "./header.component";
 
 describe('HeaderComponent', () => {
@@ -13,7 +12,6 @@ describe('HeaderComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [ HeaderComponent ],
 			imports:[RouterTestingModule, HttpClientTestingModule],
-			providers: [ConfigService]
 		})
 			.compileComponents();
 	}));

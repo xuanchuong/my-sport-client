@@ -4,7 +4,6 @@ import {MatchDetailComponent} from './match-detail.component';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {RouterTestingModule} from "@angular/router/testing";
 import {ReactiveFormsModule} from "@angular/forms";
-import {ConfigService} from "../../../services/config.service";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
 
@@ -19,7 +18,6 @@ describe('MatchDetailComponent', () => {
                 HttpClientTestingModule, RouterTestingModule, ReactiveFormsModule,
                 MatGridListModule, MatCardModule
             ],
-            providers: [ConfigService]
         })
             .compileComponents();
     }));

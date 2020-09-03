@@ -3,7 +3,6 @@ import {TestBed} from '@angular/core/testing';
 import {AuthService} from './auth.service';
 import {RouterTestingModule} from "@angular/router/testing";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {ConfigService} from "../../services/config.service";
 
 describe('AuthService', () => {
 	beforeEach(() => TestBed.configureTestingModule({
@@ -11,7 +10,6 @@ describe('AuthService', () => {
 			RouterTestingModule,
 			HttpClientTestingModule
 		],
-		providers: [ConfigService]
 	}));
 
 	it('should be created', () => {
