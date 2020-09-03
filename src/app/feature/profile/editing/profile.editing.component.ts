@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../core/auth/auth.service";
 import {User} from "../../../core/auth/user";
 import {Observable} from "rxjs";
-import {UserService} from "../../../services/user.service";
+import {UserService} from "../../../shared/user.service";
 import {Router} from "@angular/router";
 
 @Component({

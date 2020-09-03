@@ -1,4 +1,4 @@
-import {UserService} from "../../../services/user.service";
+import {UserService} from "../../../shared/user.service";
 import {TestBed} from "@angular/core/testing";
 import {CREATED} from 'http-status-codes';
 import {User} from "../../auth/user";

@@ -3,7 +3,7 @@ import {Match} from "../match";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatchService} from "../match.service";
 import {User} from "../../../core/auth/user";
-import {UserService} from "../../../services/user.service";
+import {UserService} from "../../../shared/user.service";
 
 @Component({
 	selector: 'app-match-detail',

@@ -6,7 +6,7 @@ import {map, skipWhile, switchMap, tap} from 'rxjs/operators';
 import {User} from './user';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {TokenInterceptor} from './token.interceptor';
-import {UserService} from '../../services/user.service';
+import {UserService} from '../../shared/user.service';
 import * as auth0 from 'auth0-js';
 import {environment} from '../../../environments/environment';
 
