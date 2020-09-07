@@ -1,12 +1,14 @@
+import {BaseUser} from "../../shared/dto/baseUser";
+
 export class Match {
     id: number;
-    ownerId: number;
+    owner: BaseUser;
     title: string;
     startDate: string;
     location: string;
     numberOfPlayers: number;
     description: string;
-    participantIds: number[];
-    constructor() {
-    }
+    participants: BaseUser[];
+
+    constructor() {}
 }

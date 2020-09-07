@@ -2,3 +2,60 @@ mat-card {
     width: calc(100% - 30px);
     height: calc(100% - 30px);
 }
+
+.match-detail-wrapper {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.participant-wrapper {
+    display: flex;
+    justify-content: space-around;
+
+    .participant-right {
+        width: 45%;
+
+        .participant {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            .info {
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .participant-left {
+        width: 45%;
+
+        .participant {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            .info {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .participant {
+        margin-top: 20px;
+    }
+    .avt-wrapper {
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        .avt {
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
+
