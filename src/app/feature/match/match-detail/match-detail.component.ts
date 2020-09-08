@@ -7,26 +7,26 @@ import {BehaviorSubject} from "rxjs";
 import {AuthService} from "../../../core/auth/auth.service";
 
 @Component({
-	selector: 'app-match-detail',
-	templateUrl: './match-detail.component.html',
-	styleUrls: ['./match-detail.component.scss']
+    selector: 'app-match-detail',
+    templateUrl: './match-detail.component.html',
+    styleUrls: ['./match-detail.component.scss']
 })
 export class MatchDetailComponent implements OnInit {
 
-	match: Match;
-	owner: BaseUser;
-	joined$ = new BehaviorSubject<boolean>(false);
+    match: Match;
+    owner: BaseUser;
+    joined$;
 
-	constructor(
-		private route: ActivatedRoute,
-		private router: Router,
-		private matchService: MatchService,
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private matchService: MatchService,
         private authService: AuthService
-	) {
-	}
+    ) {
+    }
 
     ngOnInit(): void {
-	    console.log('onInit');
+        this.joined$ = new BehaviorSubject<boolean>(false);
         this.route.paramMap.subscribe(params => {
             this.matchService.getMatchById(params.get('matchId')).subscribe(match => {
                 const sessionUser = this.authService.getLoggedUser().getValue();
@@ -41,28 +41,28 @@ export class MatchDetailComponent implements OnInit {
         })
     }
 
-	deleteTheMatch() {
-		console.log("delete match");
-		this.matchService.delete(this.match.id).then(result => {
-			if (result) {
-				this.router.navigate(['/home']).then();
-			}
-		})
-	}
+    deleteTheMatch() {
+        this.matchService.delete(this.match.id).then(() => {
+            this.router.navigate(['/home']).then();
+        })
+    }
 
-	joinTheMatch() {
-		console.log("join the match");
-		this.matchService.joinTheMatch(this.match.id).then(result => {
-			if (result) {
-				this.joined$.next(true);
-			}
-		}, error => {
-			console.error(error);
-		});
-	}
+    joinTheMatch() {
+        this.matchService.joinTheMatch(this.match.id).subscribe(result => {
+            this.joined$.next(true);
+            this.match = result;
+        }, error => {
+            console.error(error);
+        });
+    }
 
 
     leaveTheMatch() {
-
+        this.matchService.leaveTheMatch(this.match.id).subscribe(result => {
+            this.joined$.next(false);
+            this.match = result;
+        }, error => {
+            console.error(error);
+        });
     }
 }

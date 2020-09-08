@@ -36,13 +36,17 @@
         <mat-card>
             <mat-card-header>
                 <mat-card-title>danh sach nguoi choi</mat-card-title>
-                <button mat-button *ngIf="!joined$.getValue()" (click)="joinTheMatch()">join</button>
-                <button mat-button *ngIf="joined$.getValue()" (click)="leaveTheMatch()">left the match</button>
+                <div *ngIf="!(joined$ | async)">
+                    <button mat-button (click)="joinTheMatch()">join</button>
+                </div>
+                <div *ngIf="joined$ | async">
+                    <button mat-button (click)="leaveTheMatch()">left the match</button>
+                </div>
             </mat-card-header>
             <mat-card-content class="participant-wrapper">
                 <div class="participant-left">
                     <div class="participant"
-                         *ngFor="let player of match.participants.slice (0,match.participants.length/2)">
+                         *ngFor="let player of match.participants.slice (0,match.participants.length/2+1)">
                         <div class="info">
                             <label>{{player.email}}</label>
                         </div>
@@ -55,7 +59,7 @@
                 </div>
                 <div class="participant-right">
                     <div class="participant"
-                         *ngFor="let player of match.participants.slice (match.participants.length/2, match.participants.length)">
+                         *ngFor="let player of match.participants.slice (match.participants.length/2+1, match.participants.length)">
                         <div class="avt-wrapper">
                             <div class="avt">
                                 <img src="assets/img/unknown-avt.png" alt="avt">

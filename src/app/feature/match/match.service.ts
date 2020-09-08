@@ -54,8 +54,11 @@ export class MatchService {
         return this.http.delete<boolean>(RESOURCE_URL + '?id=' + matchId).toPromise();
     }
 
-    joinTheMatch(matchId: number): Promise<boolean> {
-        return this.http.put<boolean>(this.JOIN_MATCH_URL + '?matchId=' + matchId, {}, {})
-            .toPromise();
+    joinTheMatch(matchId: number): Observable<Match> {
+        return this.http.put<Match>(this.JOIN_MATCH_URL + '?matchId=' + matchId, {}, {});
+    }
+
+    leaveTheMatch(matchId: number): Observable<Match> {
+        return this.http.put<Match>(RESOURCE_URL + '/leave?matchId=' + matchId, {}, {});
     }
 }
