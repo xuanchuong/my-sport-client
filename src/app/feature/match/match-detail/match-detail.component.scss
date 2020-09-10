@@ -8,6 +8,26 @@ mat-card {
     width: 50%;
 }
 
+.match-info {
+    .general-info {
+        .match-info-detail {
+            margin-bottom: 10px;
+            display: flex;
+            label {
+                margin-left: 10px;
+            }
+        }
+        padding-bottom: 20px;
+    }
+
+    .owner-info {
+        padding-top: 20px;
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-top-color: rgba(0, 0, 0, 0.2);
+    }
+}
+
 .participant-wrapper {
     display: flex;
     justify-content: space-around;
@@ -32,30 +52,16 @@ mat-card {
         .participant {
             display: flex;
             align-items: center;
-            justify-content: flex-end;
+            justify-content: flex-start;
 
             .info {
-                margin-right: 10px;
+                margin-left: 10px;
             }
         }
     }
 
     .participant {
         margin-top: 20px;
-    }
-    .avt-wrapper {
-        width: 58px;
-        height: 58px;
-        border-radius: 50%;
-        overflow: hidden;
-
-        .avt {
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-        }
     }
 }
 

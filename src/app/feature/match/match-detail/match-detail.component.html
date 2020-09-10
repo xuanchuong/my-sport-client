@@ -1,24 +1,21 @@
 <mat-grid-list *ngIf="match" cols="2" class="match-detail-wrapper">
     <mat-grid-tile class="match-info">
         <mat-card>
-            <mat-card-header>
-                <mat-card-title>Thông tin trận</mat-card-title>
-            </mat-card-header>
             <mat-card-content>
                 <div class="general-info">
-                    <div>
-                        <span>thời gian: </span>
+                    <div class="match-info-detail">
+                        <span class="material-icons">today</span>
                         <label> {{match.startDate}}</label>
                     </div>
-                    <div>
-                        <span>địa điểm: </span>
+                    <div class="match-info-detail">
+                        <span class="material-icons">location_on</span>
                         <label> {{match.location}}</label>
                     </div>
-                    <div>
-                        <span>mô tả: </span>
+                    <div class="match-info-detail">
+                        <span class="material-icons">speaker_notes</span>
                         <label>{{match.description}}</label>
                     </div>
-                    <div>
+                    <div class="match-info-detail">
                         <span>số lượng thành viên: </span>
                         <label>{{match.numberOfPlayers}}</label>
                     </div>
@@ -47,13 +44,11 @@
                 <div class="participant-left">
                     <div class="participant"
                          *ngFor="let player of match.participants.slice (0,match.participants.length/2+1)">
+                        <div class="avt">
+                            <span class="material-icons">account_circle</span>
+                        </div>
                         <div class="info">
                             <label>{{player.email}}</label>
-                        </div>
-                        <div class="avt-wrapper">
-                            <div class="avt">
-                                <img src="assets/img/unknown-avt.png" alt="avt">
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -62,7 +57,7 @@
                          *ngFor="let player of match.participants.slice (match.participants.length/2+1, match.participants.length)">
                         <div class="avt-wrapper">
                             <div class="avt">
-                                <img src="assets/img/unknown-avt.png" alt="avt">
+                                <span class="material-icons">account_circle</span>
                             </div>
                         </div>
                         <div class="info">
