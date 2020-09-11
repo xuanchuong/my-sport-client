@@ -1,4 +1,11 @@
+.match-list-wrapper {
+    margin: 0 auto;
+    width: 50%;
+}
+
 mat-card {
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
     margin-bottom: 20px;
 
     &:hover {
@@ -7,11 +14,23 @@ mat-card {
         border-color: #1ba0e2;
     }
 
-    .slot {
+    .match-card-header {
+        padding-bottom: 20px;
         display: flex;
-        justify-content: flex-end;
-        .slot-container {
+        justify-content: space-between;
+
+        .time {
 
         }
+
+        .slot-container {
+        }
+    }
+
+    .match-card-body {
+        padding-top: 20px;
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-top-color: rgba(0, 0, 0, 0.2);
     }
 }

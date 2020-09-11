@@ -1,15 +1,20 @@
-<mat-card *ngFor="let match of availableMatches" routerLink="/matches/{{match.id}}">
-	<mat-card-header>
-		<mat-card-title>{{match.startDate | date:'fullDate'}}</mat-card-title>
-	</mat-card-header>
-	<mat-card-content>
-
-		<div>{{match.description}}</div>
-		<div class="slot">
-			<div class="slot-container">
-			<span>Slot: </span>
-			<span>{{match.numberOfPlayers}}</span>
-			</div>
-		</div>
-	</mat-card-content>
-</mat-card>
+<mat-grid-list cols="3" class="match-list-wrapper">
+    <mat-grid-tile *ngFor="let match of availableMatches">
+        <mat-card routerLink="/matches/{{match.id}}">
+            <div class="match-card-header">
+                <div class="time">
+                    <span>{{match.startDate | date:'EEEE, d/M/y, h:mm a'}}</span>
+                </div>
+                <div class="slot-container">
+                    <div *ngIf="match.participants.length >= match.numberOfPlayers">
+                        <span>Full</span>
+                    </div>
+                    <span>{{match.participants.length}}/{{match.numberOfPlayers}}</span>
+                </div>
+            </div>
+            <div class="match-card-body">
+                <div>{{match.description}}</div>
+            </div>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
