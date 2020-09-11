@@ -61,4 +61,8 @@ export class MatchService {
     leaveTheMatch(matchId: number): Observable<Match> {
         return this.http.put<Match>(RESOURCE_URL + '/leave?matchId=' + matchId, {}, {});
     }
+
+    cancelTheMatch(matchId: number): Observable<boolean> {
+        return this.http.put<boolean>(RESOURCE_URL + '/cancel?matchId=' + matchId, {}, {});
+    }
 }

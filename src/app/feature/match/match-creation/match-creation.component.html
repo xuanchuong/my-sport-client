@@ -15,9 +15,17 @@
 		<div class="start-time input-field">
 			<mat-form-field>
 				<mat-label>Thời gian</mat-label>
-				<input matInput formControlName="startDate" [matDatepicker]="picker">
+
+                <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" formControlName="startDate"
+                        [disabled]="false">
 				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-				<mat-datepicker #picker></mat-datepicker>
+
+                <ngx-mat-datetime-picker #picker [showSpinners]="false" [showSeconds]="false"
+                                         [stepHour]="1" [stepMinute]="15" [stepSecond]="1"
+                                         [touchUi]="false" [enableMeridian]="false"
+                                         [disableMinute]="false" [hideTime]="false">
+                </ngx-mat-datetime-picker>
+
 				<div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
 					<div *ngIf="f.startDate.errors.required">start Date is required</div>
 				</div>

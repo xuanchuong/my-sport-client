@@ -13,14 +13,22 @@ mat-card {
         .match-info-detail {
             margin-bottom: 10px;
             display: flex;
+
             label {
                 margin-left: 10px;
             }
         }
+
         padding-bottom: 20px;
     }
-
     .owner-info {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-top-color: rgba(0, 0, 0, 0.2);
+    }
+    .owner-actions {
         padding-top: 20px;
         border-top-style: solid;
         border-top-width: 1px;
@@ -29,39 +37,55 @@ mat-card {
 }
 
 .participant-wrapper {
-    display: flex;
-    justify-content: space-around;
+    .participant-header {
+        padding-bottom: 20px;
+    }
+    .participant-body {
+        display: flex;
+        justify-content: space-around;
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-top-color: rgba(0, 0, 0, 0.2);
+        padding-bottom: 20px;
 
-    .participant-right {
-        width: 45%;
+        .participant-right {
+            width: 45%;
 
-        .participant {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
+            .participant {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
 
-            .info {
-                margin-left: 10px;
+                .info {
+                    margin-left: 10px;
+                }
             }
         }
-    }
 
-    .participant-left {
-        width: 45%;
+        .participant-left {
+            width: 45%;
 
-        .participant {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
+            .participant {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
 
-            .info {
-                margin-left: 10px;
+                .info {
+                    margin-left: 10px;
+                }
             }
         }
-    }
 
-    .participant {
-        margin-top: 20px;
+        .participant {
+            margin-top: 20px;
+        }
+    }
+    .participant-actions {
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-top-color: rgba(0, 0, 0, 0.2);
+        padding-top: 20px;
     }
 }
+
 

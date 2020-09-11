@@ -1,11 +1,11 @@
 <mat-grid-list *ngIf="match" cols="2" class="match-detail-wrapper">
     <mat-grid-tile class="match-info">
         <mat-card>
-            <mat-card-content>
+            <div>
                 <div class="general-info">
                     <div class="match-info-detail">
                         <span class="material-icons">today</span>
-                        <label> {{match.startDate}}</label>
+                        <label> {{match.startDate | date: 'EEEE, d/M/y, h:mm a'}}</label>
                     </div>
                     <div class="match-info-detail">
                         <span class="material-icons">location_on</span>
@@ -23,24 +23,23 @@
                 <div class="owner-info">
                     <div>
                         <span>lien he: </span>
-                        <label>{{owner.firstName}}</label>
+                        <label>{{match.owner.firstName}}</label>
                     </div>
                 </div>
-            </mat-card-content>
+                <div class="owner-actions" *ngIf="isMatchOwner$ | async">
+                    <div>
+                        <button (click)="cancelTheMatch()">cancel</button>
+                    </div>
+                </div>
+            </div>
         </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile class="participant-wrapper">
         <mat-card>
-            <mat-card-header>
-                <mat-card-title>danh sach nguoi choi</mat-card-title>
-                <div *ngIf="!(joined$ | async)">
-                    <button mat-button (click)="joinTheMatch()">join</button>
-                </div>
-                <div *ngIf="joined$ | async">
-                    <button mat-button (click)="leaveTheMatch()">left the match</button>
-                </div>
-            </mat-card-header>
-            <mat-card-content class="participant-wrapper">
+            <div class="participant-header">
+                <div>danh sach nguoi choi</div>
+            </div>
+            <div class="participant-body">
                 <div class="participant-left">
                     <div class="participant"
                          *ngFor="let player of match.participants.slice (0,match.participants.length/2+1)">
@@ -65,8 +64,15 @@
                         </div>
                     </div>
                 </div>
-            </mat-card-content>
+            </div>
+            <div class="participant-actions">
+                <div *ngIf="!(joined$ | async)">
+                    <button (click)="joinTheMatch()">join</button>
+                </div>
+                <div *ngIf="joined$ | async">
+                    <button (click)="leaveTheMatch()">left the match</button>
+                </div>
+            </div>
         </mat-card>
-
     </mat-grid-tile>
 </mat-grid-list>

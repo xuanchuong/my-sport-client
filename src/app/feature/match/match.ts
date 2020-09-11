@@ -4,7 +4,7 @@ export class Match {
     id: number;
     owner: BaseUser;
     title: string;
-    startDate: string;
+    startDate: Date;
     location: string;
     numberOfPlayers: number;
     description: string;

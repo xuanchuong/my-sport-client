@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Match} from "../match";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatchService} from "../match.service";
-import {BaseUser} from "../../../shared/dto/baseUser";
 import {BehaviorSubject} from "rxjs";
 import {AuthService} from "../../../core/auth/auth.service";
 
@@ -14,8 +13,8 @@ import {AuthService} from "../../../core/auth/auth.service";
 export class MatchDetailComponent implements OnInit {
 
     match: Match;
-    owner: BaseUser;
-    joined$;
+    joined$: BehaviorSubject<boolean>;
+    isMatchOwner$: BehaviorSubject<boolean>;
 
     constructor(
         private route: ActivatedRoute,
@@ -27,16 +26,19 @@ export class MatchDetailComponent implements OnInit {
 
     ngOnInit(): void {
         this.joined$ = new BehaviorSubject<boolean>(false);
+        this.isMatchOwner$ = new BehaviorSubject<boolean>(false);
         this.route.paramMap.subscribe(params => {
             this.matchService.getMatchById(params.get('matchId')).subscribe(match => {
                 const sessionUser = this.authService.getLoggedUser().getValue();
                 this.match = match;
-                this.owner = match.owner;
                 this.match.participants.forEach(participant => {
                     if (participant.id === sessionUser.id) {
                         this.joined$.next(true);
                     }
                 })
+                if (this.match.owner.id === sessionUser.id) {
+                    this.isMatchOwner$.next(true);
+                }
             })
         })
     }
@@ -63,6 +65,12 @@ export class MatchDetailComponent implements OnInit {
             this.match = result;
         }, error => {
             console.error(error);
+        });
+    }
+
+    cancelTheMatch() {
+        this.matchService.cancelTheMatch(this.match.id).subscribe(result => {
+            this.router.navigate(['/home']).then();
         });
     }
 }
