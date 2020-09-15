@@ -24,8 +24,8 @@ import {FeatureModule} from "./feature/feature.module";
 		// local
 		CoreModule,
 		SharedModule,
-		AppRoutingModule,
-		FeatureModule
+		FeatureModule,
+		AppRoutingModule
 	],
 	providers: [
 		{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 5000}},
